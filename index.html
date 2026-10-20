@@ -425,7 +425,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
       <p>Ground and first floor for each home. These marketing plans show the proposed internal layout. Purchasers must review and sign the construction drawings, which take precedence.</p>
     </div>
     <div class="fptabs" id="fptabs" role="group" aria-label="Floor plan for"></div>
-    <div class="fpbox"><img id="fpimg" src="assets/plans/1.jpg" alt="Floor plan of terrace 1" data-cap="Terrace 1: floor plan"><span class="tag">Marketing plan · not a construction drawing</span></div>
+    <div class="fpbox"><img id="fpimg" src="assets/plans/1.jpg?v=20261020" alt="Floor plan of terrace 1" data-cap="Terrace 1: floor plan"><span class="tag">Marketing plan · not a construction drawing</span></div>
   </div>
 </section>
 
@@ -660,7 +660,7 @@ function pick(n){
   const u=UNITS[n-1];
   svg.querySelectorAll("polygon").forEach(p=>p.classList.toggle("on",+p.dataset.n===n));
   [fptabs,list].forEach(g=>g.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.n===n)));
-  const fp=$("#fpimg");fp.src=`assets/plans/${n}.jpg`;fp.alt="Floor plan of "+u.name;fp.dataset.cap=u.name+": floor plan (ground and first floor)";
+  const fp=$("#fpimg");fp.src=`assets/plans/${n}.jpg?v=20261020`;fp.alt="Floor plan of "+u.name;fp.dataset.cap=u.name+": floor plan (ground and first floor)";
   sel.selectedIndex=n;
   const out=[];
   if(u.bal!=null) out.push(["Balcony",fmt(u.bal)+" m²"]);
@@ -702,7 +702,7 @@ viewer.addEventListener("keydown",e=>{if(e.key==="ArrowRight")step(1);if(e.key==
 viewer.addEventListener("click",e=>{if(e.target.classList.contains("vw")||e.target.tagName==="FIGURE")viewer.close()});
 let tx0=null;viewer.addEventListener("touchstart",e=>tx0=e.touches[0].clientX,{passive:true});
 viewer.addEventListener("touchend",e=>{if(tx0==null)return;const dx=e.changedTouches[0].clientX-tx0;if(Math.abs(dx)>50)step(dx<0?1:-1);tx0=null});
-$("#fpimg").addEventListener("click",()=>{const n=UNITS.findIndex(u=>$("#fpimg").src.endsWith(`/${u.n}.jpg`));openViewer(Math.max(0,n),UNITS.map(u=>({src:`assets/plans/${u.n}.jpg`,t:u.name,d:"Floor plan, ground and first floor",note:"Marketing plan, not a construction drawing"})))});
+$("#fpimg").addEventListener("click",()=>{const n=UNITS.findIndex(u=>$("#fpimg").src.includes(`/${u.n}.jpg`));openViewer(Math.max(0,n),UNITS.map(u=>({src:`assets/plans/${u.n}.jpg?v=20261020`,t:u.name,d:"Floor plan, ground and first floor",note:"Marketing plan, not a construction drawing"})))});
 
 /* ---------- make it yours ---------- */
 const plaqueText=$("#plaque-text"),nameIn=$("#name-in");
