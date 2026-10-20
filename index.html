@@ -539,8 +539,8 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
       <label>Last name<input id="f-last" autocomplete="off" required></label>
       <label>Email<input id="f-email" type="email" autocomplete="off" required></label>
       <label>Phone<input id="f-phone" type="tel" autocomplete="off" required></label>
-      <label class="full">Home of interest<select id="f-terrace"><option>Any home</option></select></label>
-      <label class="full">I am<select id="f-type"><option>Buying to live in</option><option>Investing</option><option>Downsizing</option><option>Just browsing</option></select></label>
+      <label class="full">Home of interest<select id="f-terrace" required><option value="" selected disabled>Choose a home</option><option>Any home</option></select></label>
+      <label class="full">I am<select id="f-type" required><option value="" selected disabled>Choose one</option><option>Buying to live in</option><option>Investing</option><option>Downsizing</option><option>Just browsing</option></select></label>
       <label class="full">Budget<select id="f-budget" required><option value="" selected disabled>Choose a range</option><option>$700k to $900k</option><option>$900k to $1m</option><option>$1m and above</option></select></label>
       <label class="full">Finance approved, or funds to complete?<select id="f-finance" required><option value="" selected disabled>Choose one</option><option>Yes, finance approved</option><option>Yes, sufficient funds to complete</option><option>Not yet</option></select></label>
       <label class="full check"><input id="f-updates" type="checkbox"><span>Keep me updated about future TN Macartney Projects developments (optional; unsubscribe at any time).</span></label>
@@ -654,14 +654,14 @@ document.querySelectorAll("#filters button").forEach(b=>b.addEventListener("clic
   const keep=u=>f==="all"||(f==="available"?!u.uc:u.street===f);
   list.querySelectorAll(".home").forEach(h=>h.hidden=!keep(UNITS[h.dataset.n-1]));
   svg.querySelectorAll("polygon").forEach(p=>p.classList.toggle("dim",!keep(UNITS[p.dataset.n-1])));
-  if(f!=="all")pick(UNITS.find(keep).n);
+  if(f!=="all")pick(UNITS.find(keep).n,false);
 }));
-function pick(n){
+function pick(n,fill=true){
   const u=UNITS[n-1];
   svg.querySelectorAll("polygon").forEach(p=>p.classList.toggle("on",+p.dataset.n===n));
   [fptabs,list].forEach(g=>g.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.n===n)));
   const fp=$("#fpimg");fp.src=`assets/plans/${n}.jpg?v=20261020`;fp.alt="Floor plan of "+u.name;fp.dataset.cap=u.name+": floor plan (ground and first floor)";
-  sel.selectedIndex=n;
+  if(fill)sel.selectedIndex=n+1;   // placeholder, "Any home", then Terrace 1–9; only when the visitor picks a home, so the form starts blank
   const out=[];
   if(u.bal!=null) out.push(["Balcony",fmt(u.bal)+" m²"]);
   if(u.court) out.push([n===9?"Private courtyard":"Rear courtyard",fmt(u.court)+" m²"]);
@@ -680,7 +680,7 @@ function pick(n){
     </dl>
     <div class="ctas"><a class="btn btn-dark" href="#plans">Floor plan</a><a class="btn btn-outline" href="#register">${u.uc?"Ask about similar homes":"Request this pack"}</a></div>`;
 }
-pick(1);
+pick(1,false);
 
 /* ---------- gallery + viewer ---------- */
 const ggrid=$("#ggrid");let gset=GALLERY.slice(),vi=0;
@@ -780,7 +780,7 @@ $("#reg-form").addEventListener("submit",async e=>{
   e.preventDefault();
   const f=e.target,ok=$("#f-ok"),btn=f.querySelector("button[type=submit]"),v=id=>$(id).value.trim();
   const say=(t,bad)=>{ok.textContent=t;ok.style.color=bad?"#9B2C2C":"";ok.hidden=false};
-  const need=[["#f-first","first name"],["#f-last","last name"],["#f-email","email"],["#f-phone","phone number"],["#f-budget","budget"],["#f-finance","finance answer"]].filter(([id])=>!v(id));
+  const need=[["#f-first","first name"],["#f-last","last name"],["#f-email","email"],["#f-phone","phone number"],["#f-terrace","home of interest"],["#f-type","buyer type"],["#f-budget","budget"],["#f-finance","finance answer"]].filter(([id])=>!v(id));
   f.querySelectorAll("[required]").forEach(el=>el.setAttribute("aria-invalid",String(!el.value.trim())));
   if(need.length)return say("Please add your "+need.map(n=>n[1]).join(", ").replace(/, ([^,]*)$/," and $1")+".",true);
   if(!$("#f-email").checkValidity())return say("Please check your email address.",true);
