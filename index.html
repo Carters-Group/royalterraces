@@ -769,7 +769,7 @@ if("IntersectionObserver" in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const k=railFor[e.target.id];rail.forEach(a=>a.classList.toggle("on",a.getAttribute("href")===k))}}),{rootMargin:"-45% 0px -50% 0px"});
   ["vision","gallery","homes","plans","location","register","notices"].map(id=>document.getElementById(id)).filter(Boolean).forEach(el=>io.observe(el));
 }
-const FORM="";
+const FORM="https://formspree.io/f/xbgdeqdr";
 $("#reg-form").addEventListener("submit",async e=>{
   e.preventDefault();
   const f=e.target,ok=$("#f-ok"),btn=f.querySelector("button[type=submit]"),v=id=>$(id).value.trim();
