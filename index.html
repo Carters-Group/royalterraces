@@ -534,12 +534,15 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
     </div>
     <form id="reg-form" novalidate>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-      <label>First name<input id="f-first" autocomplete="off"></label>
-      <label>Last name<input id="f-last" autocomplete="off"></label>
-      <label>Email<input id="f-email" type="email" autocomplete="off"></label>
-      <label>Phone<input id="f-phone" type="tel" autocomplete="off"></label>
+      <p class="full cap" style="margin:0">All fields are required except the updates box.</p>
+      <label>First name<input id="f-first" autocomplete="off" required></label>
+      <label>Last name<input id="f-last" autocomplete="off" required></label>
+      <label>Email<input id="f-email" type="email" autocomplete="off" required></label>
+      <label>Phone<input id="f-phone" type="tel" autocomplete="off" required></label>
       <label class="full">Home of interest<select id="f-terrace"><option>Any home</option></select></label>
       <label class="full">I am<select id="f-type"><option>Buying to live in</option><option>Investing</option><option>Downsizing</option><option>Just browsing</option></select></label>
+      <label class="full">Budget<select id="f-budget" required><option value="" selected disabled>Choose a range</option><option>$700k to $900k</option><option>$900k to $1m</option><option>$1m and above</option></select></label>
+      <label class="full">Finance approved, or funds to complete?<select id="f-finance" required><option value="" selected disabled>Choose one</option><option>Yes, finance approved</option><option>Yes, sufficient funds to complete</option><option>Not yet</option></select></label>
       <label class="full check"><input id="f-updates" type="checkbox"><span>Keep me updated about future TN Macartney Projects developments (optional; unsubscribe at any time).</span></label>
       <p class="full privacy">TN Macartney Projects Pty Ltd collects your details to send the pack you asked for and contact you about 6 Royal Street. We keep them in our enquiries register and share them only as our <a href="privacy.html">privacy policy</a> describes. It also explains how to see or correct your details and how to complain.</p>
       <div class="full" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
@@ -774,10 +777,13 @@ $("#reg-form").addEventListener("submit",async e=>{
   e.preventDefault();
   const f=e.target,ok=$("#f-ok"),btn=f.querySelector("button[type=submit]"),v=id=>$(id).value.trim();
   const say=(t,bad)=>{ok.textContent=t;ok.style.color=bad?"#9B2C2C":"";ok.hidden=false};
-  if(!v("#f-first")||(!v("#f-email")&&!v("#f-phone")))return say("Please add your name and an email or phone number.",true);
-  if(v("#f-email")&&!$("#f-email").checkValidity())return say("Please check your email address.",true);
+  const need=[["#f-first","first name"],["#f-last","last name"],["#f-email","email"],["#f-phone","phone number"],["#f-budget","budget"],["#f-finance","finance answer"]].filter(([id])=>!v(id));
+  f.querySelectorAll("[required]").forEach(el=>el.setAttribute("aria-invalid",String(!el.value.trim())));
+  if(need.length)return say("Please add your "+need.map(n=>n[1]).join(", ").replace(/, ([^,]*)$/," and $1")+".",true);
+  if(!$("#f-email").checkValidity())return say("Please check your email address.",true);
   if(!FORM)return say("Sorry, enquiries aren't connected yet. Please call Trent Macartney on 0411 940 010.",true);
   const data={first_name:v("#f-first"),last_name:v("#f-last"),email:v("#f-email"),phone:v("#f-phone"),home:$("#f-terrace").value,buyer_type:$("#f-type").value,
+    budget:v("#f-budget"),finance:v("#f-finance"),
     future_updates:$("#f-updates").checked?"Yes":"No",source:"Website",_subject:"6 Royal St enquiry: "+$("#f-terrace").value,_gotcha:f._gotcha.value};
   if(data.email)data._replyto=data.email;
   btn.disabled=true;say("Sending…");
