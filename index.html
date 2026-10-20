@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>6 Royal St Terraces · Toowoomba City</title>
+<meta name="description" content="Nine heritage-inspired terraces at 6 Royal Street, Toowoomba City: eight two-bedroom terraces and one courtyard home, a short walk from the CBD. 7.9 star average energy rating. From $745,000.">
+<link rel="canonical" href="https://www.royalterraces.com.au/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="6 Royal St Terraces">
+<meta property="og:title" content="6 Royal St Terraces · Toowoomba City">
+<meta property="og:description" content="Nine heritage-inspired terraces at 6 Royal Street, Toowoomba City: eight two-bedroom terraces and one courtyard home, a short walk from the CBD. 7.9 star average energy rating. From $745,000.">
+<meta property="og:url" content="https://www.royalterraces.com.au/">
+<meta property="og:image" content="https://www.royalterraces.com.au/assets/r/whole-facade.jpg">
+<meta property="og:image:alt" content="Render of the terraces on Royal and Snell Streets (artist's impression)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2E4A3B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232E4A3B'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' text-anchor='middle' fill='%23F3F3EE'%3E6%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one sticky bar carries the sections and all nine homes. Vision → homes → gallery (even grid, click-through
+   viewer) → floor plans → make it yours (plaque name + the Sage interior) → garden & parking → location (zoomable aerial) → register. */
+:root{
+  --paper:#F3F3EE; --paper-2:#E7E8E0; --ink:#16201B; --ink-2:#46534B; --green:#2E4A3B; --brass:#8A6630;
+  --line:rgba(22,32,27,.16); --bar:rgba(243,243,238,.96); --on-photo:#F8F6F0; --card:#FFFFFF;
+  --head:"Source Serif 4",Georgia,"Times New Roman",serif; --body:"Public Sans","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121A15;--paper-2:#1B251F;--ink:#ECEAE2;--ink-2:#B2BBB2;--green:#A9C2AC;--brass:#D2AC6E;
+  --line:rgba(236,234,226,.17);--bar:rgba(18,26,21,.96);--card:#18211C;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121A15;--paper-2:#1B251F;--ink:#ECEAE2;--ink-2:#B2BBB2;--green:#A9C2AC;--brass:#D2AC6E;
+  --line:rgba(236,234,226,.17);--bar:rgba(18,26,21,.96);--card:#18211C;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17.5px/1.7 var(--body)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+h1,h2,h3{font-family:var(--head);font-weight:600;text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:1200px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+section{scroll-margin-top:24px}
+.sec{padding-block:clamp(56px,7vw,88px)}
+.sec+.sec{border-top:1px solid var(--line)}
+.head{display:grid;gap:12px;max-width:68ch;margin-bottom:clamp(24px,3vw,36px)}
+.head h2{font-size:clamp(30px,3.6vw,44px)}
+.head p{color:var(--ink-2)}
+.eyebrow{font:700 12.5px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.cap{font-size:14px;color:var(--ink-2);line-height:1.5}
+.tag{position:absolute;left:8px;top:8px;font:600 11.5px/1.3 var(--body);color:#fff;background:rgba(14,20,17,.72);padding:4px 8px;border-radius:2px;pointer-events:none}
+
+.draft{background:var(--green);color:var(--paper);font-size:14px}
+.draft .wrap{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;justify-content:space-between;padding-block:9px}
+.draft strong{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:12.5px}
+.btn-ghost{font:600 13px var(--body);background:none;border:1px solid currentColor;color:inherit;border-radius:3px;padding:5px 12px;cursor:pointer}
+
+/* section rail: five buttons that follow the reader — right edge on desktop, bottom bar on phones */
+.rail{position:fixed;right:max(12px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:40;display:grid;gap:6px;padding:8px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 30px -12px rgba(0,0,0,.35)}
+.rail a{display:grid;justify-items:center;gap:3px;width:78px;padding:9px 4px 7px;border-radius:7px;text-decoration:none;color:var(--ink-2);font:600 11.5px/1.15 var(--body);text-align:center}
+.rail svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+.rail a:hover{background:var(--paper-2);color:var(--ink)}
+.rail a.on{background:var(--ink);color:var(--paper)}
+.rail a.go{color:var(--green)}
+.rail a.go.on{background:var(--green);color:var(--paper)}
+@media (min-width:901px) and (max-width:1460px){.wrap{padding-right:116px}}
+@media (max-width:900px){
+  .rail{top:auto;bottom:0;right:0;left:0;transform:none;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;border-radius:0;border-width:1px 0 0;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+  .rail a{width:auto;font-size:11px;padding:6px 2px}
+  body{padding-bottom:72px}
+}
+/* hero: the Royal Street render */
+.hero{position:relative;color:var(--on-photo);background:#1b2520;overflow:hidden;min-height:clamp(440px,62vw,680px);display:grid;align-items:end}
+
+/* headline over the whole-facade render (Trent, 16 Oct); the full image is first in the gallery */
+.hero>.hero-img{position:absolute;inset:0}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,16,12,.72) 0%,rgba(10,16,12,.42) 42%,rgba(10,16,12,0) 70%),linear-gradient(0deg,rgba(10,16,12,.5) 0%,rgba(10,16,12,0) 45%)}
+.hero h1,.hero .lede,.hero .eyebrow{text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.hero-img .tag{left:auto;right:clamp(16px,4vw,40px);top:auto;bottom:12px;z-index:2}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(48px,7vw,96px);display:grid;gap:20px;width:100%}
+.hero h1{font-size:clamp(38px,5.6vw,72px);max-width:14ch}
+.hero .lede{max-width:50ch;font-size:clamp(17px,1.5vw,19.5px);color:rgba(248,246,240,.95)}
+.hero .eyebrow{color:#E7CF9F}
+
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-block;font:700 14px var(--body);letter-spacing:.04em;text-decoration:none;padding:13px 20px;border-radius:3px;border:1px solid transparent;cursor:pointer}
+.btn-light{background:var(--on-photo);color:#16201B}
+.btn-line{border-color:rgba(248,246,240,.75);color:var(--on-photo);background:transparent}
+.btn-dark{background:var(--green);color:var(--paper)}
+.btn-outline{border-color:var(--ink);color:var(--ink);background:transparent}
+
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border-bottom:1px solid var(--line)}
+.ledger div{padding:18px 16px 18px 0;min-width:0}
+.ledger div+div{padding-left:16px;border-left:1px solid var(--line)}
+.ledger b{display:block;font:600 clamp(24px,2.6vw,30px)/1.2 var(--head);font-variant-numeric:lining-nums tabular-nums}
+.ledger span{font-size:14px;color:var(--ink-2)}
+
+/* vision */
+.two{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(28px,4vw,56px);align-items:center}
+.two .text{display:grid;gap:16px;min-width:0}
+.two .text p{max-width:62ch}
+.stars{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.stars li{display:grid;grid-template-columns:92px minmax(0,1fr) 44px;align-items:center;gap:12px;font-size:15px}
+.stars .bar{height:12px;background:var(--paper-2);border-radius:2px;position:relative;overflow:hidden}
+.stars .bar i{position:absolute;inset:0 auto 0 0;background:var(--green);border-radius:2px}
+.stars .bar s{position:absolute;top:0;bottom:0;width:2px;background:var(--brass);text-decoration:none}
+.stars b{font:600 16px var(--head);text-align:right;font-variant-numeric:tabular-nums}
+.stars-key{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13.5px;color:var(--ink-2);margin-top:10px}
+.stars-key i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;border-radius:2px}
+.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(24px,3vw,36px)}
+.feat div{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px;font-size:15.5px;line-height:1.55}
+.feat b{display:block;font:600 18px/1.3 var(--head);margin-bottom:4px}
+.feat span{color:var(--ink-2)}
+.builder-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:clamp(20px,3vw,32px);display:grid;gap:14px}
+.builder-card .logo{display:grid;place-items:center;height:120px;border:1px dashed var(--line);border-radius:3px;color:var(--ink-2);font-size:14px;text-align:center;padding:8px}
+.tbc{background:#F6E7B8;color:#4a3a10;padding:1px 5px;border-radius:2px;font-size:.92em}
+@media (max-width:900px){.feat{grid-template-columns:minmax(0,1fr)}.stars li{grid-template-columns:78px minmax(0,1fr) 40px}}
+.pull{font:500 22px/1.45 var(--head);color:var(--green);border-left:3px solid var(--brass);padding-left:16px}
+.points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px;margin-top:6px}
+.points div{border-top:1px solid var(--line);padding-top:10px;font-size:15.5px}
+.points b{display:block;font-weight:600}
+.points span{color:var(--ink-2)}
+.r{position:relative;margin:0}
+.r img{width:100%;height:auto;background:var(--paper-2)}
+.r figcaption{margin-top:8px;font-size:14.5px}
+
+/* homes */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filters button,.gfilters button{font:600 14px var(--body);padding:8px 14px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"],.gfilters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.explore{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3vw,40px);align-items:start}
+.plan{position:relative;background:#F7F3EC;border:1px solid var(--line)}
+.plan img{width:100%;height:auto}
+.plan svg{position:absolute;inset:0;width:100%;height:100%}
+.plan polygon{fill:transparent;stroke:transparent;stroke-width:5;cursor:pointer;transition:fill .2s}
+.plan polygon:hover{fill:rgba(168,129,74,.22)}
+.plan polygon.on{fill:rgba(168,129,74,.45);stroke:#8A6532}
+.plan polygon.dim{fill:rgba(243,243,238,.55)}
+.plan polygon.uc{fill:rgba(156,43,30,.18)}
+.plan polygon.uc.on{fill:rgba(156,43,30,.32);stroke:#9C2B1E}
+.badge{display:inline-block;font:700 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#9C2B1E;padding:3px 7px;border-radius:2px;justify-self:start}
+.home.uc{opacity:.78}
+.plan-note{margin-top:8px;font-size:13px;color:var(--ink-2)}
+.card{display:grid;gap:14px;min-width:0}
+.plaque{justify-self:start;border:1px solid var(--ink);outline:1px solid var(--ink);outline-offset:4px;padding:8px 22px 7px;margin:5px;text-align:center}
+.plaque small{display:block;font:700 11px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
+.plaque span{display:block;font:600 clamp(26px,2.8vw,34px)/1.15 var(--head);letter-spacing:.04em;text-transform:uppercase}
+.where{font-size:15.5px;color:var(--ink-2)}
+.spec{display:grid;grid-template-columns:auto 1fr;margin:0;border-top:1px solid var(--line)}
+.spec dt,.spec dd{margin:0;padding:8px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.spec dt{color:var(--ink-2);padding-right:18px}
+.spec dd{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.card .ctas .btn{padding:10px 16px;font-size:13.5px}
+.homes{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:clamp(28px,3vw,40px)}
+.home{display:grid;gap:4px;text-align:left;font:inherit;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:14px 16px;cursor:pointer}
+.home:hover{border-color:var(--ink-2)}
+.home[aria-pressed="true"]{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+.home b{font:600 20px var(--head)}
+.home .st{font-size:13px;color:var(--brass);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.home .m{font-size:14.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+
+/* gallery: even grid, opens a viewer */
+.gfilters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ggrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ggrid button{position:relative;padding:0;border:0;background:var(--paper-2);cursor:zoom-in;border-radius:3px;overflow:hidden;aspect-ratio:3/2}
+.ggrid img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.ggrid button:hover img{transform:scale(1.04)}
+.ggrid .lbl{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;font:600 13.5px var(--body);color:#fff;text-align:left;background:linear-gradient(0deg,rgba(10,16,12,.75),rgba(10,16,12,0))}
+.ggrid .tag{font-size:10.5px;padding:3px 6px}
+
+/* floor plans */
+.fptabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.fptabs button{font:600 14px var(--body);padding:7px 12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:3px;cursor:pointer}
+.fptabs button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--paper)}
+.fpbox{position:relative;border:1px solid var(--line);background:#fff}
+.fpbox img{width:100%;height:auto;cursor:zoom-in}
+
+/* make it yours */
+/* v19 (Trent: neater): naming row = small facade + the name box; then the interior as its own row, render + a finishes list */
+.yours{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.interior{margin-top:clamp(40px,5vw,64px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line)}
+.interior-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,3vw,40px);align-items:start;margin-top:18px}
+.interior-grid.fin{display:block}
+.interior-grid.fin .palette{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:28px}
+@media (max-width:900px){.interior-grid.fin .palette{grid-template-columns:minmax(0,1fr)}}
+.facade{position:relative;margin:0;border-radius:3px;overflow:hidden;background:var(--paper-2)}
+.facade img{width:100%;height:auto}
+.facade .tag{top:auto;bottom:8px}
+.facade .pl{position:absolute;left:40.6%;top:4.4%;width:19.7%;height:5.5%;display:grid;place-items:center;overflow:hidden}
+.facade .pl span{font:600 12px/1 var(--head);letter-spacing:.1em;text-transform:uppercase;color:#4a3f2c;text-shadow:0 1px 0 rgba(255,255,255,.35);white-space:nowrap}
+.namer{display:grid;gap:10px;max-width:46ch}
+.vis-name{display:grid;gap:12px}
+.namer.box{max-width:none;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px;scroll-margin-top:24px}
+.namer h3{font-size:24px}
+.namer label{font:600 14px var(--body);color:var(--ink)}
+.namer input{font:600 18px var(--head);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:10px 12px;width:100%}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 16px}
+.tabs button{font:600 15px var(--body);padding:9px 16px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.palette{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.palette li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.palette i{display:block;width:48px;height:48px;border-radius:4px;border:1px solid var(--line)}
+.palette b{display:block;color:var(--ink);font-weight:600;font-size:15.5px}
+.palette span{font-size:14.5px;color:var(--ink-2);line-height:1.4}
+.scheme-img{position:relative;margin:0;border-radius:3px;overflow:hidden}
+.scheme-img img{width:100%;aspect-ratio:3/2;object-fit:cover}
+
+/* location: zoomable aerial */
+.mapwrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+.mapview{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#2b2f2a;touch-action:none;cursor:grab;user-select:none}
+.mapview.drag{cursor:grabbing}
+.stage{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0;--inv:1}
+.stage img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.stage .ov{position:absolute;inset:0;transition:opacity .2s;pointer-events:none}
+.stage .ov svg{position:absolute;inset:0;width:100%;height:100%}
+.stage .ov line{stroke-width:calc(var(--k,1.6) * 2.6px * var(--inv))}
+.stage .ov polygon{stroke-width:calc(var(--k,1.6) * 1.6px * var(--inv))}
+.stage .ov line.t{stroke-width:calc(var(--k,1.6) * 1.3px * var(--inv))}
+.pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2.5px solid #16201B;background:#fff;color:#16201B;font:700 13px var(--body);display:grid;place-items:center;cursor:pointer;transform:scale(var(--inv));padding:0;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.pin.approx{border-style:dashed}
+.pin.on{background:#E7CF9F;transform:scale(calc(var(--inv) * 1.25))}
+.homemk{position:absolute;width:0;height:0;transform:scale(var(--inv));transform-origin:0 0;pointer-events:none;z-index:1}
+.homemk i{position:absolute;left:-15px;top:-15px;width:30px;height:30px;border-radius:50%;background:#8A6532;border:4px solid #fff;box-shadow:0 0 0 7px rgba(138,101,50,.35)}
+/* the "6 Royal St" label takes whichever side of the dot is clear of other pins at the current zoom (placeHome) */
+.homemk b{position:absolute;right:26px;top:-14px;background:#16201B;color:#F8F6F0;font:700 14px var(--body);padding:5px 10px;border-radius:3px;white-space:nowrap}
+.homemk b::after{content:"";position:absolute;right:-6px;top:50%;margin-top:-6px;border:6px solid transparent;border-right:0;border-left-color:#16201B}
+.homemk.n b{right:auto;left:-46px;top:auto;bottom:24px}.homemk.n b::after{right:auto;left:40px;top:auto;bottom:-6px;margin:0;border:6px solid transparent;border-bottom:0;border-top-color:#16201B}
+.homemk.e b{right:auto;left:26px}.homemk.e b::after{right:auto;left:-6px;border:6px solid transparent;border-left:0;border-right-color:#16201B}
+.homemk.nolab b{display:none}
+.homemk.sw b{top:16px}.homemk.sw b::after{top:4px;margin:0}.homemk.nw b{top:-44px}.homemk.nw b::after{top:auto;bottom:4px;margin:0}
+.homemk.s b{right:auto;left:-46px;top:24px}.homemk.s b::after{right:auto;left:40px;top:-6px;margin:0;border:6px solid transparent;border-top:0;border-bottom-color:#16201B}
+.mapctl{position:absolute;right:10px;top:10px;display:grid;gap:6px;z-index:2}
+.mapctl button{width:38px;height:38px;border:0;border-radius:3px;background:rgba(255,255,255,.94);color:#16201B;font:700 20px var(--body);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.maplegend{position:absolute;left:10px;bottom:10px;z-index:2;background:rgba(16,22,18,.82);color:#F8F6F0;font-size:12.5px;border-radius:4px;padding:8px 10px;display:grid;gap:4px}
+.maplegend i{display:inline-block;width:26px;height:4px;border-radius:2px;vertical-align:middle;margin-right:8px}
+.maplegend label{display:flex;align-items:center;gap:6px;font-weight:600;cursor:pointer;margin-bottom:2px}
+.maphint{position:absolute;left:10px;top:10px;z-index:2;background:rgba(16,22,18,.75);color:#F8F6F0;font-size:12.5px;border-radius:3px;padding:5px 9px}
+.credit{position:absolute;right:8px;bottom:6px;z-index:2;font-size:10.5px;color:#fff;text-shadow:0 1px 2px #000}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;display:grid}
+.pcard .ph{position:relative;aspect-ratio:4/3;background:var(--paper-2);display:grid;place-items:center;color:var(--ink-2);font-size:13.5px}
+.pcard .ph img{width:100%;height:100%;object-fit:cover}
+.pcard .bd{padding:14px 16px 16px;display:grid;gap:6px}
+.pcard h3{font-size:21px}
+.pcard .t{font:700 14px var(--body);color:var(--brass);letter-spacing:.04em}
+.pcard p{font-size:15px;color:var(--ink-2);line-height:1.5}
+.places{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;margin-top:20px}
+@media (max-width:1100px){.places{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.places .g{display:grid;align-content:start}
+.places h3{font-size:18px;margin:6px 0 4px}
+.place{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;padding:7px 4px;border:0;border-bottom:1px solid var(--line);background:none;font:inherit;font-size:15px;color:inherit;text-align:left;cursor:pointer}
+.place .no{font:700 12.5px var(--body);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;border:2px solid var(--ink)}
+.place .no.approx{border-style:dashed}
+.place .t{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.place:hover,.place.on{background:var(--paper-2)}
+
+/* register + notices */
+.reg{background:var(--paper-2)}
+.reg .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form .full{grid-column:1/-1}
+form label{display:grid;gap:5px;font-size:14px;color:var(--ink-2)}
+form label.check{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5}
+form label.check input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:var(--green)}
+.reg .privacy{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+form input,form select{font:400 16px var(--body);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:11px 12px;width:100%}
+.ok{font-size:14.5px;color:var(--green);font-weight:600}
+.notice{border:2px solid var(--ink);padding:clamp(20px,3vw,32px);display:grid;gap:12px;max-width:900px}
+.notice h2{font-size:clamp(24px,2.6vw,30px)}
+.notice ul{margin:0;padding-left:20px;display:grid;gap:8px}
+footer{padding-block:36px 56px;font-size:13.5px;color:var(--ink-2)}
+footer .wrap{display:grid;gap:10px}
+.cmt{font:600 12.5px var(--body);color:var(--ink-2);background:none;border:1px dashed var(--line);border-radius:3px;padding:4px 10px;cursor:pointer;justify-self:start}
+
+/* viewer */
+dialog{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#EDEAE0}
+dialog::backdrop{background:rgba(8,12,10,.94)}
+.vw{position:relative;width:100%;height:100%;display:grid;grid-template-rows:1fr auto;padding:56px 70px 16px}
+.vw figure{margin:0;display:grid;place-items:center;min-height:0}
+.vw img{max-width:100%;max-height:calc(100vh - 150px);width:auto;height:auto;background:#fff}
+.vw .meta{text-align:center;font-size:14px;padding-top:10px}
+.vw .meta b{color:#fff}
+.vw .nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:64px;border:0;border-radius:3px;background:rgba(237,234,224,.14);color:#fff;font:400 34px/1 var(--body);cursor:pointer}
+.vw .nav:hover{background:rgba(237,234,224,.28)}
+.vw .prev{left:10px}.vw .next{right:10px}
+.vw .close{position:absolute;top:12px;right:14px;font:600 14px var(--body);background:#EDEAE0;color:#16201B;border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
+.vw .count{position:absolute;top:18px;left:18px;font:600 13px var(--body);color:#C9CFC6}
+
+@media (max-width:900px){
+  .explore,.two,.yours,.interior-grid,.reg .grid,.mapwrap{grid-template-columns:minmax(0,1fr)}
+  .ggrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .places{grid-template-columns:minmax(0,1fr)}
+  form{grid-template-columns:1fr}
+  .vw{padding:52px 10px 12px}.vw .nav{top:auto;bottom:14px;transform:none}
+}
+@media (max-width:560px){
+  .points,.palette{grid-template-columns:minmax(0,1fr)}
+  .ledger div+div{padding-left:0;border-left:0}.ledger div{border-bottom:1px solid var(--line)}
+  .r1 .brand{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<nav class="rail" aria-label="Sections" id="rail">
+  <a href="#name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 2-.9 2-2 0-1.2-1-1.6-1-2.6 0-.8.7-1.4 1.5-1.4H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="11" cy="7.5" r="1.2"/><circle cx="15.5" cy="8.5" r="1.2"/></svg><span>Name it</span></a>
+  <a href="#gallery"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 3-3 6 6"/></svg><span>Gallery</span></a>
+  <a href="#homes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11h-5v-6H9v6z"/></svg><span>Terraces</span></a>
+  <a href="#energy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19 13 11"/></svg><span>Energy</span></a>
+  <!--BUILDER <a href="#builder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18"/><path d="M5 18v-3a7 7 0 0 1 14 0v3"/><path d="M10 9V6h4v3"/></svg><span>Builder</span></a> BUILDER-->
+  <a href="#location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Location</span></a>
+  <a href="#register" class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg><span>Enquire</span></a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-img"><img src="assets/r/whole-facade.jpg" alt="The whole development from the corner of Royal and Snell Streets: painted heritage terraces with iron-lace balconies on Royal Street, a planted side wall and timber pergola at the driveway, and the Snell Street terraces beyond"><span class="tag">Render · artist's impression</span></div>
+  <div class="wrap">
+    <p class="eyebrow">Royal Street · Toowoomba City</p>
+    <h1>Nine heritage-inspired terraces on Royal Street</h1>
+    <p class="lede">Painted facades, iron-lace balconies and front gardens, on a quiet corner a short walk from the heart of Toowoomba. Eight two-bedroom terraces and one courtyard home.</p>
+    <div class="ctas">
+      <a class="btn btn-light" href="#homes">Find your terrace</a>
+      <a class="btn btn-line" href="#register">Request an information pack</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="ledger" role="list">
+    <div role="listitem"><b>9 homes</b><span>8 two-bed terraces + 1 one-bed courtyard home</span></div>
+    <div role="listitem"><b>2 min</b><span>walk to the grocer and two cafés</span></div>
+    <div role="listitem"><b>5 min</b><span>walk to Grand Central shopping centre</span></div>
+    <div role="listitem"><b>7.9 stars</b><span>average energy rating (7.1 to 8.4 across the nine homes)</span></div>
+    <div role="listitem"><b>From $745,000</b><span>price list on request</span></div>
+  </div>
+</div>
+
+<!-- Vision -->
+<section class="sec" id="vision" aria-labelledby="h-v">
+  <div class="wrap two">
+    <div class="text">
+      <p class="eyebrow">The vision</p>
+      <h2 id="h-v" style="font-size:clamp(30px,3.6vw,44px)">A terrace street that feels like it was always here</h2>
+      <p>Nine homes side by side, each with its own front door to the street, a garden at the gate and a balcony above. The facades are painted in soft heritage colours and trimmed with wrought-iron lace and timber friezes. Each parapet carries a plaque, and you can choose the name on yours.</p>
+      <p class="pull">Classic terrace character outside, light and easy living inside.</p>
+      <p>Upstairs, the kitchen, dining and living flow onto a covered balcony. Downstairs there's a second lounge, so there's room to work from home, host guests or give everyone their own space. Behind the homes is a shared garden, and every home has its own car space off the street.</p>
+      <div class="points">
+        <div><b>Your own front door</b><span>Street frontage and a front garden</span></div>
+        <div><b>Two living areas</b><span>Upstairs living, downstairs lounge</span></div>
+        <div><b>Name your terrace</b><span>Choose the name on your plaque†</span></div>
+        <div><b>One designer interior</b><span>Sage, soft green and brushed brass</span></div>
+      </div>
+    </div>
+    <div class="vis-name">
+      <figure class="r facade"><img src="assets/r/single-terrace.jpg" alt="Front of a single terrace with arched timber friezes, wrought-iron balcony, front garden and timber door; the name typed below appears on its parapet plaque"><div class="pl" aria-hidden="true"><span id="plaque-text">Your name</span></div><span class="tag">Render · artist's impression</span></figure>
+      <div class="namer box" id="name">
+        <label for="name-in">Name your terrace: try it on the plaque</label>
+        <input id="name-in" maxlength="14" placeholder="e.g. Rosehill" autocomplete="off">
+        <p class="cap">Names are subject to the developer's approval under the contract and must be unique on the street. Unnamed terraces are named by the developer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="sec" id="gallery" aria-labelledby="h-g">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Gallery</p>
+      <h2 id="h-g">Gallery</h2>
+      <p>Click any image to open the viewer, then use the arrows (or your keyboard) to move through them. All images are artist's impressions; interiors show terrace 3 in the Sage scheme.</p>
+    </div>
+    <div class="gfilters" id="gfilters" role="group" aria-label="Filter gallery">
+      <button type="button" data-g="all" aria-pressed="true">All</button>
+      <button type="button" data-g="out">Outside</button>
+      <button type="button" data-g="in">Inside</button>
+      <button type="button" data-g="shared">Garden &amp; parking</button>
+    </div>
+    <div class="ggrid" id="ggrid"></div>
+    <div class="interior" id="scheme"></div>
+  </div>
+</section>
+
+<!-- Homes -->
+<section class="sec" id="homes" aria-labelledby="h-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The homes</p>
+      <h2 id="h-h">Find your terrace</h2>
+      <p>Five homes are available and four are under contract. Filter by street or availability, then pick a home on the site plan. North is to the right of the plan.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter homes">
+      <button type="button" data-f="all" aria-pressed="true">All nine</button>
+      <button type="button" data-f="Royal Street">Royal St · north-facing (1–5)</button>
+      <button type="button" data-f="Snell Street">Snell St · west-north-west (6–8)</button>
+      <button type="button" data-f="Brown Lane">Courtyard home (9)</button>
+      <button type="button" data-f="available">Available only</button>
+    </div>
+    <div class="explore">
+      <div>
+        <div class="plan" id="plan">
+          <img src="assets/site.jpg" alt="Site plan of 6 Royal Street showing nine numbered terraces, the central car park, communal open space and bin store" width="1600" height="1216">
+          <svg id="plan-svg" viewBox="560 225 1415 1075" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Homes on the site plan"></svg>
+        </div>
+        <p class="plan-note">Lots 17–18 on D13362 · 939.9 m² · marketing plan, not a construction drawing</p>
+      </div>
+      <article class="card" id="card" aria-live="polite"></article>
+    </div>
+    <p class="cap" style="margin-top:12px">Areas are approximate, from the approved plans, and rounded. Total includes the balcony. Every home has one 2.5 × 5.4 m car space; allocation to be confirmed. †Plaque name subject to the developer's approval under the contract.</p>
+  </div>
+</section>
+
+<!-- Floor plans -->
+<section class="sec" id="plans" aria-labelledby="h-p">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Floor plans</p>
+      <h2 id="h-p">Floor plans</h2>
+      <p>Ground and first floor for each home. These marketing plans show the proposed internal layout. Purchasers must review and sign the construction drawings, which take precedence.</p>
+    </div>
+    <div class="fptabs" id="fptabs" role="group" aria-label="Floor plan for"></div>
+    <div class="fpbox"><img id="fpimg" src="assets/plans/1.jpg" alt="Floor plan of terrace 1" data-cap="Terrace 1: floor plan"><span class="tag">Marketing plan · not a construction drawing</span></div>
+  </div>
+</section>
+
+<!-- Energy -->
+<section class="sec" id="energy" aria-labelledby="h-e">
+  <div class="wrap two" style="align-items:start">
+    <div class="text">
+      <div class="head" style="margin-bottom:18px">
+        <p class="eyebrow">Energy efficiency</p>
+        <h2 id="h-e">Comfortable all year, with less heating and cooling</h2>
+        <p>The nine homes at 6 Royal Street have a 7.9 star average energy rating under NatHERS, the national energy rating scheme for homes. Every home is rated above the 7-star standard, from 7.1 up to 8.4 for the courtyard home, and seven of the nine are rated 7.8 stars or higher. The more stars a home has, the less heating and cooling it needs to stay comfortable, which means lower power bills through a Toowoomba winter and summer.</p>
+      </div>
+      <p class="pull">Seven stars is the current standard for a new home in Queensland. Most of these homes go well beyond it.</p>
+    </div>
+    <div>
+      <ul class="stars" aria-label="NatHERS star rating by terrace">
+        <li><span>Terrace 1</span><span class="bar" role="img" aria-label="7.1 stars out of 10"><i style="width:71%"></i><s style="left:70%"></s></span><b>7.1★</b></li>
+        <li><span>Terrace 2</span><span class="bar" role="img" aria-label="8.2 stars out of 10"><i style="width:82%"></i><s style="left:70%"></s></span><b>8.2★</b></li>
+        <li><span>Terrace 3</span><span class="bar" role="img" aria-label="8.2 stars out of 10"><i style="width:82%"></i><s style="left:70%"></s></span><b>8.2★</b></li>
+        <li><span>Terrace 4</span><span class="bar" role="img" aria-label="8.3 stars out of 10"><i style="width:83%"></i><s style="left:70%"></s></span><b>8.3★</b></li>
+        <li><span>Terrace 5</span><span class="bar" role="img" aria-label="7.4 stars out of 10"><i style="width:74%"></i><s style="left:70%"></s></span><b>7.4★</b></li>
+        <li><span>Terrace 6</span><span class="bar" role="img" aria-label="7.8 stars out of 10"><i style="width:78%"></i><s style="left:70%"></s></span><b>7.8★</b></li>
+        <li><span>Terrace 7</span><span class="bar" role="img" aria-label="7.9 stars out of 10"><i style="width:79%"></i><s style="left:70%"></s></span><b>7.9★</b></li>
+        <li><span>Terrace 8</span><span class="bar" role="img" aria-label="7.8 stars out of 10"><i style="width:78%"></i><s style="left:70%"></s></span><b>7.8★</b></li>
+        <li><span>Terrace 9</span><span class="bar" role="img" aria-label="8.4 stars out of 10"><i style="width:84%"></i><s style="left:70%"></s></span><b>8.4★</b></li>
+      </ul>
+      <div class="stars-key"><span><i style="background:var(--green)"></i>Rating, out of 10 stars</span><span><i style="background:var(--brass);width:3px"></i>7-star standard for new homes</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="feat">
+      <div><b>Insulated roof and ceilings</b><span>R5.0 bulk insulation in the upper ceilings, with an R1.3 insulating blanket under the roof sheets.</span></div>
+      <div><b>Insulated walls</b><span>R2.7 insulation to all external walls, plus insulated, fire-rated lightweight walls between homes for quiet and privacy.</span></div>
+      <div><b>Performance glazing</b><span>Aluminium-framed windows and doors with EnergyTec® glass, which cuts heat gain in summer and heat loss in winter.</span></div>
+      <div><b>Concrete upper floors</b><span>A 35 mm fibre-reinforced concrete floor upstairs, which holds warmth and keeps sound down between levels.</span></div>
+      <div><b>Ceiling fans</b><span>1200 mm ceiling fans in the living areas and bedrooms, for cooling with little power.</span></div>
+      <div><b>Good orientation</b><span>The Royal Street homes face north, so their balconies and living areas get winter sun.</span></div>
+      <div style="grid-column:1/-1"><b>Rooftop solar on every home</b><span>Each home has its own solar power system: about 6.4 kW for each two-bedroom terrace, and a smaller system for Terrace 9, to cut power bills. Final size subject to roof layout and building approval.</span></div>
+    </div>
+    <p class="cap" style="margin-top:16px">Star ratings are from NatHERS modelling of each home by an accredited energy assessor, using the specification listed above (solar power is not part of the star rating). Final certificates are issued with building approval. The specification may change, but only to equal or better energy performance.</p>
+  </div>
+</section>
+
+<!-- Builder -->
+<section class="sec" id="builder" aria-labelledby="h-b" hidden><!-- hidden 17 Oct 2026 (Trent) until the Watcon contract is signed: remove `hidden` here and the comment marks on the rail link -->
+  <div class="wrap two">
+    <div class="text">
+      <div class="head" style="margin-bottom:18px">
+        <p class="eyebrow">The builder</p>
+        <h2 id="h-b">Built by Watcon Building Group</h2>
+        <p>6 Royal Street will be built by Watcon Building Group, a Toowoomba builder founded by Joe Watson, who brings 24 years of experience in the building industry. Watcon holds a QBCC Open Builder licence and builds across southern Queensland, including on heritage-listed and heritage-overlay sites: the right experience for a street of heritage-inspired terraces.</p>
+      </div>
+      <div class="points">
+        <div><b>Local</b><span>Head office in Toowoomba City, close at hand during the build and after handover</span></div>
+        <div><b>Experienced</b><span>Founder Joe Watson has 24 years in the building industry</span></div>
+        <div><b>Family-run</b><span>A family business, with Joe involved day to day</span></div>
+        <div><b>Financial strength</b><span>A strong balance sheet that supports the build from start to finish</span></div>
+        <div><b>Proper systems</b><span>Safety management aligned with AS/NZS 4801, quality and risk systems, and full insurances</span></div>
+        <div><b>Capacity to deliver</b><span>A dedicated team of project, site, contract and safety managers</span></div>
+      </div>
+    </div>
+    <div class="builder-card">
+      <figure class="r" style="margin:0;position:relative"><img src="assets/builder/watcon-team.jpg" alt="The Watcon Building Group team standing in front of a painted brick wall" style="width:100%;border-radius:3px"></figure>
+      <p><strong>Watcon Building Group</strong><br>Founder: Joe Watson<br>55 Clifford Street, Toowoomba City QLD 4350</p>
+      <p class="cap">QBCC licence 15307421 (Open Builder) · <a href="https://www.watconbg.com.au" target="_blank" rel="noopener">watconbg.com.au</a><br>You can check any builder's licence on the QBCC online licence search.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Location -->
+<section class="sec" id="location" aria-labelledby="h-l">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Location</p>
+      <h2 id="h-l">Everything you need, on foot</h2>
+      <p>Royal Street sits on the north edge of Toowoomba's city centre. The grocer and two cafés, The Baker's Duck and Ortem, are two minutes away, The Farm park and Grand Central five, the primary school seven; the CBD and a run of good cafés are all within ten. Scroll or pinch to zoom the aerial, drag to move, and click a numbered dot to see what's there. Streets are coloured by actual walking time from the front door.</p>
+    </div>
+    <div class="mapwrap">
+      <div class="mapview" id="mapview" aria-label="Aerial map of the area around 6 Royal Street">
+        <div class="stage" id="stage">
+          <img id="aerial" src="assets/area/aerial.jpg" alt="">
+          <div class="ov" id="overlay" aria-hidden="true"></div>
+        </div>
+        <span class="maphint" id="maphint">Scroll to zoom · drag to move</span>
+        <div class="mapctl"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">−</button><button type="button" id="zreset" aria-label="Show the whole area" style="font-size:15px">⤢</button></div>
+        <div class="maplegend">
+          <label><input type="checkbox" id="ovt" checked> Walking times</label>
+          <span><i style="background:#8A6532;width:12px;height:12px;border-radius:50%;border:2px solid #fff;margin-right:14px"></i>6 Royal St</span><span><i style="background:#7CE0A1"></i>Under 5 min</span><span><i style="background:#F2D16B"></i>5–10 min</span><span><i style="background:#F29B6B"></i>10–15 min</span><span><i style="background:rgba(124,224,161,.45);height:10px;border:1.5px solid #7CE0A1"></i>Park</span>
+        </div>
+        <span class="credit">Aerial © State of Queensland (CC BY 4.0) · streets © OpenStreetMap contributors</span>
+      </div>
+      <article class="pcard" id="pcard" aria-live="polite"></article>
+    </div>
+    <div class="places" id="places"></div>
+    <p class="cap" style="margin-top:16px">Walking times are calculated over the street and path network at about 4.8 km/h from the Royal Street frontage (map data © OpenStreetMap contributors). The aerial is the latest publicly released Queensland Government imagery and may predate recent buildings. Positions of 6 Royal St and the addressed venues are from Queensland Government property and address data. "Voted Queensland's best bakery" refers to the 2026 QLD Day All the Best public vote. Photos marked stock do not show the businesses; other venue photos are supplied. Businesses and opening hours may change.</p>
+  </div>
+</section>
+
+<!-- Register -->
+<section class="sec reg" id="register" aria-labelledby="h-r">
+  <div class="wrap grid">
+    <div class="head" style="margin:0">
+      <p class="eyebrow">Register</p>
+      <h2 id="h-r">Request an information pack</h2>
+      <p>Choose a home and we'll send its pack: the price, floor plan and areas, where it sits on the site, the walking map, the Sage interior with the full finishes schedule, and the selection and plaque-name form.</p>
+    </div>
+    <form id="reg-form" novalidate>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+      <label>First name<input id="f-first" autocomplete="off"></label>
+      <label>Last name<input id="f-last" autocomplete="off"></label>
+      <label>Email<input id="f-email" type="email" autocomplete="off"></label>
+      <label>Phone<input id="f-phone" type="tel" autocomplete="off"></label>
+      <label class="full">Home of interest<select id="f-terrace"><option>Any home</option></select></label>
+      <label class="full">I am<select id="f-type"><option>Buying to live in</option><option>Investing</option><option>Downsizing</option><option>Just browsing</option></select></label>
+      <label class="full check"><input id="f-updates" type="checkbox"><span>Keep me updated about future TN Macartney Projects developments (optional; unsubscribe at any time).</span></label>
+      <p class="full privacy">TN Macartney Projects Pty Ltd collects your details to send the pack you asked for and contact you about 6 Royal Street. We keep them in our enquiries register and share them only as our <a href="privacy.html">privacy policy</a> describes. It also explains how to see or correct your details and how to complain.</p>
+      <div class="full" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+        <button class="btn btn-dark" type="submit">Request the pack</button>
+        <span class="ok" id="f-ok" role="status" aria-live="polite" hidden></span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="sec" id="notices" aria-labelledby="h-n">
+  <div class="wrap">
+    <div class="notice">
+      <h2 id="h-n">Important notices</h2>
+      <ul>
+        <li><b>Images are renders.</b> Every image of the development on this page is a computer-generated artist's impression and is indicative only. Furniture, decor, artwork, landscaping maturity, finishes and inclusions shown may not be supplied.</li>
+        <li><b>Construction drawings must be seen and signed.</b> The floor plans and site plan on this page are marketing plans, not construction drawings. Before purchase, buyers must review and sign the construction drawings and the inclusions schedule, which take precedence over anything shown here.</li>
+        <li><b>Figures are approximate.</b> Areas are taken from the approved plans and rounded. Walking times are estimates. Prices and availability may change.</li>
+        <li><b>Third-party content.</b> Area photos marked stock are licensed stock images and do not show the businesses named. Aerial imagery © State of Queensland (CC BY 4.0); street data © OpenStreetMap contributors.</li>
+        <li>This website is general information only. It is not an offer or a contract.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>6 Royal Street, Toowoomba City QLD 4350</strong> · Lots 17–18 on D13362 · Development approval PDA/2026/4242, decided 16 September 2026.</p>
+    <p>Enquiries: Trent Macartney · <a href="tel:+61411940010">0411 940 010</a> · <a href="mailto:trent@cartersinvestments.com.au">trent@cartersinvestments.com.au</a></p>
+    <p>Developer and seller: TN Macartney Projects Pty Ltd · ABN 68 657 387 258 · <a href="privacy.html">Privacy policy</a></p>
+    <p>Architecture: Van Heerden Design Studio · Landscape: Evan Prentice · Aerial imagery © State of Queensland (CC BY 4.0) · Map data © OpenStreetMap contributors</p>
+  </div>
+</footer>
+
+<dialog id="viewer" aria-label="Image viewer">
+  <div class="vw">
+    <span class="count" id="v-count"></span>
+    <button class="close" id="v-close" type="button">Close ✕</button>
+    <figure><img id="v-img" alt=""></figure>
+    <p class="meta" id="v-meta"></p>
+    <button class="nav prev" id="v-prev" type="button" aria-label="Previous image">‹</button>
+    <button class="nav next" id="v-next" type="button" aria-label="Next image">›</button>
+  </div>
+</dialog>
+
+<script>
+const UNITS=[
+ {n:1,street:"Royal Street",aspect:"North-facing balcony and front garden, beside the communal garden",bed:2,bath:"2",gf:42.2,ff:52.7,bal:12.4,total:107.4,star:7.1},
+ {n:2,street:"Royal Street",aspect:"North-facing balcony and front garden",bed:2,bath:"2",gf:48.8,ff:57.5,bal:14,total:120.3,star:8.2},
+ {n:3,street:"Royal Street",aspect:"North-facing balcony and front garden",bed:2,bath:"2",gf:50.7,ff:57.6,bal:16.6,total:124.8,star:8.2},
+ {n:4,street:"Royal Street",aspect:"North-facing balcony and front garden",bed:2,bath:"2",gf:52.3,ff:57.6,bal:17.4,total:127.3,star:8.3},
+ {n:5,street:"Royal Street",aspect:"North-facing balcony and front garden, corner terrace",bed:2,bath:"2",gf:51.1,ff:57.6,bal:17.4,total:126.1,star:7.4},
+ {n:6,street:"Snell Street",aspect:"West-north-west facing balcony and a private rear courtyard",bed:2,bath:"2",gf:49.5,ff:53.8,bal:14,court:5.5,total:117.3,star:7.8},
+ {n:7,street:"Snell Street",aspect:"West-north-west facing balcony and a private rear courtyard",bed:2,bath:"2",gf:49.5,ff:53.8,bal:11.6,court:5.5,total:114.9,star:7.9},
+ {n:8,street:"Snell Street",aspect:"West-north-west facing balcony",bed:2,bath:"2",gf:49.5,ff:53.8,bal:11.6,total:114.9,star:7.8},
+ {n:9,street:"Brown Lane",aspect:"One-bedroom courtyard home with an east-facing private courtyard",bed:1,bath:"1 + powder",gf:34.4,ff:36.3,bal:null,court:25.11,total:70.6,star:8.4}
+].map(u=>({...u,name:"Terrace "+u.n,uc:[3,4,5,8].includes(u.n)}));
+const FOOT={"1":[[1348.2,1123.8],[1615.8,1154.8],[1602,1274.2],[1406.7,1274],[1400.7,1273.4],[1402.8,1255.5],[1333.9,1247.5]],"2":[[1363.1,988.1],[1648.4,1021.1],[1632.7,1156.7],[1347.4,1123.7]],"3":[[1378.7,853],[1674.9,887.3],[1659.3,1022.4],[1363.1,988.1]],"4":[[1404.9,719.2],[1710.4,754.5],[1694.8,889.6],[1389.2,854.3]],"5":[[1420.5,584.1],[1725.6,619.4],[1709.9,754.5],[1404.9,719.2]],"6":[[598,790.8],[598,496.2],[736.7,496.2],[736.7,790.8]],"7":[[736.7,790.8],[736.7,496.2],[872.8,496.2],[872.8,790.8]],"8":[[872.8,817.8],[872.8,523.1],[1011.6,523.1],[1011.6,817.8]],"9":[[600.4,898.6],[812.6,898.6],[812.6,1028.8],[600.4,1028.8]]};
+const GALLERY=[
+ {f:"whole-facade",g:"out",t:"Royal and Snell Streets",d:"The whole development from the corner"},
+ {f:"royal-view",g:"out",t:"Royal Street",d:"Terraces 1 to 5"},
+ {f:"snell-st-view",g:"out",t:"Snell Street",d:"Terraces 6 to 8, from the driveway entry"},
+ {f:"single-terrace",g:"out",t:"One terrace",d:"Front on"},
+ {f:"entry",g:"in",t:"Entry hall",d:"Ground floor, oak-look herringbone floor and a sage panelled wall"},
+ {f:"kitchen-new",g:"in",t:"Kitchen",d:"First floor, stone island with a timber dining end"},
+ {f:"living",g:"in",t:"Living",d:"Out to the balcony"},
+ {f:"lounge",g:"in",t:"Living",d:"Fireplace and TV wall"},
+ {f:"outdoor-patio",g:"in",t:"Balcony",d:"Covered, with outdoor dining"},
+ {f:"master",g:"in",t:"Main bedroom",d:"First floor"},
+ {f:"main-bath",g:"in",t:"Bathroom",d:"Ground floor, walk-in shower"},
+ {f:"mpr",g:"in",t:"Second lounge",d:"Ground floor, with a desk"},
+ {f:"common-area",g:"shared",t:"Communal garden",d:"Paved circle, lawn and sandpit"},
+ {f:"carparking",g:"shared",t:"Driveway",d:"One car space per home under planted pergolas"},
+];
+const SCHEMES=[
+ {id:"Sage",tag:"Soft green, brushed brass, warm whites",d:"Sage cabinetry and panelling, a deep sage gloss splashback and shower wall, a deep forest-green bedroom and entry feature wall, a faux brick living-room wall and brushed brass throughout. This is the scheme shown in the renders.",
+  sw:[["Cabinetry & panelling","Dulux Bay Leaf","#95A28A"],["Bedroom & entry feature wall","Deep forest green","#2F3A2C"],["Splashback & shower","Deep sage gloss tile","#4F6247"],["Walls & trims","Dulux Natural White","#EEECE5"],["Tapware & hardware","Brushed brass","linear-gradient(135deg,#B8955A,#f4e3be 45%,#B8955A 70%)"],["Floors","Oak-look herringbone","repeating-linear-gradient(45deg,#A27A55 0 6px,#8E6744 6px 7px,#A27A55 7px 13px)"]],img:"kitchen-new"},
+];
+const AREA={"site":{"x":33.043,"y":34.607},"places":[{"n":1,"name":"Betros Bros","kind":"Local grocer: fresh fruit and veg, meat and pantry staples.","group":"Food & shopping","min":2,"approx":false,"x":33.282,"y":40.577,"photo":"betros","stock":false,"local":false},{"n":2,"name":"The Baker's Duck","kind":"Artisan bakery and café with a glass-fronted bakehouse, so you can watch the baking. Voted Queensland's best bakery in the 2026 QLD Day All the Best vote. New café at 1 Railway St, opening soon.","group":"Cafés & dining","min":2,"approx":false,"x":34.789,"y":31.059,"photo":"bakery","stock":true,"local":false},{"n":3,"name":"Ortem","kind":"Café at 15 Railway St, in the old ball-bearing factory. A local favourite since 1999.","group":"Cafés & dining","min":2,"approx":false,"x":34.348,"y":38.217,"photo":"ortem","stock":false,"local":false},{"n":4,"name":"The Irish Club","kind":"Pub, dining and functions.","group":"Cafés & dining","min":4,"approx":false,"x":34.702,"y":46.127,"photo":"irish-guinness","stock":false,"local":false},{"n":5,"name":"The Farm","kind":"A great family park with a community orchard and community gardens, just north of Royal St.","group":"Culture & parks","min":5,"approx":false,"x":30.614,"y":22.923,"photo":"farm","stock":false,"local":false},{"n":6,"name":"Grand Central Shopping Centre","kind":"Woolworths, Coles, Myer, Kmart, Target and the cinemas. Nearest entry: corner of Margaret and Mylne Streets.","group":"Food & shopping","min":5,"approx":false,"x":28.276,"y":58.233,"photo":"grand-central","stock":false,"local":false},{"n":7,"name":"Toowoomba North State School","kind":"State primary school.","group":"Schools & childcare","min":7,"approx":false,"x":21.273,"y":29.648,"photo":"north-school","stock":false,"local":false},{"n":8,"name":"Toowoomba CBD","kind":"Margaret St and Ruthven St: shops, dining and services.","group":"Food & shopping","min":9,"approx":false,"x":45.346,"y":62.346,"photo":null,"stock":false,"local":false},{"n":9,"name":"Bask Early Learning","kind":"Long day care and kindergarten program, 317a Margaret St.","group":"Schools & childcare","min":9,"approx":false,"x":15.52,"y":51.885,"photo":"early-learning","stock":false,"local":false},{"n":10,"name":"Banter Coffee Kitchen","kind":"Café.","group":"Cafés & dining","min":9,"approx":false,"x":46.969,"y":60.84,"photo":"cafe","stock":true,"local":false},{"n":11,"name":"The Spotted Cow","kind":"Historic pub (est. 1892), bistro and live music.","group":"Cafés & dining","min":10,"approx":false,"x":50.592,"y":21.226,"photo":"spotted-cow","stock":false,"local":false},{"n":12,"name":"Copper Bench","kind":"Café.","group":"Cafés & dining","min":10,"approx":false,"x":47.468,"y":58.966,"photo":"cafe","stock":true,"local":false},{"n":13,"name":"Six of One Coffee Roasters","kind":"Café and roastery.","group":"Cafés & dining","min":11,"approx":false,"x":48.078,"y":15.837,"photo":"cafe","stock":true,"local":false},{"n":14,"name":"Ground Up Cafe","kind":"Café.","group":"Cafés & dining","min":11,"approx":false,"x":42.549,"y":76.141,"photo":"cafe","stock":true,"local":false},{"n":15,"name":"The Mills Precinct","kind":"Dining and retail in the restored 1898 mill.","group":"Cafés & dining","min":11,"approx":false,"x":46.454,"y":16.575,"photo":"mills","stock":false,"local":false},{"n":16,"name":"Toowoomba City Library","kind":"Library.","group":"Culture & parks","min":13,"approx":false,"x":38.497,"y":84.163,"photo":null,"stock":false,"local":false},{"n":17,"name":"Milne Bay Aquatic and Fitness Centre","kind":"Pools and gym.","group":"Culture & parks","min":13,"approx":false,"x":31.456,"y":83.514,"photo":null,"stock":false,"local":false},{"n":18,"name":"Toowoomba Regional Art Gallery","kind":"Gallery.","group":"Culture & parks","min":13,"approx":false,"x":41.323,"y":82.832,"photo":null,"stock":false,"local":false},{"n":19,"name":"Empire Theatre","kind":"Theatre and live shows.","group":"Culture & parks","min":14,"approx":false,"x":55.816,"y":76.59,"photo":null,"stock":false,"local":false},{"n":20,"name":"Queens Park","kind":"Botanic gardens and parkland; home of the Carnival of Flowers each September.","group":"Culture & parks","min":18,"approx":false,"x":78.727,"y":50.225,"photo":"blossom","stock":true,"local":true}]};
+
+const $=s=>document.querySelector(s);
+
+const fmt=v=>v==null?"–":(+v).toFixed(1);
+const NS="http://www.w3.org/2000/svg";
+const reduce=matchMedia("(prefers-reduced-motion: reduce)");
+const go=el=>el.scrollIntoView({behavior:reduce.matches?"auto":"smooth"});
+
+/* ---------- homes ---------- */
+const svg=$("#plan-svg"),fptabs=$("#fptabs"),list=$("#homelist")||document.createElement("div")   /* home cards removed in v20 (Trent); kept detached so the filters still run */,card=$("#card"),sel=$("#f-terrace");
+UNITS.forEach(u=>{
+  const p=document.createElementNS(NS,"polygon");
+  p.setAttribute("points",FOOT[u.n].map(q=>q.join(",")).join(" "));
+  p.dataset.n=u.n;if(u.uc)p.classList.add("uc");p.setAttribute("tabindex","0");p.setAttribute("role","button");p.setAttribute("aria-label",u.name+(u.uc?", under contract":""));
+  const t=document.createElementNS(NS,"title");t.textContent=u.name+(u.uc?" · Under contract":"");p.appendChild(t);
+  p.addEventListener("click",()=>pick(u.n));
+  p.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(u.n)}});
+  svg.appendChild(p);
+
+  const f=document.createElement("button");f.type="button";f.dataset.n=u.n;f.innerHTML=u.name+(u.uc?` <small style="font-weight:600;opacity:.75">· under contract</small>`:"");
+  f.addEventListener("click",()=>pick(u.n));fptabs.appendChild(f);
+  const h=document.createElement("button");h.type="button";h.className="home";h.dataset.n=u.n;h.dataset.street=u.street;
+  h.className="home"+(u.uc?" uc":"");h.innerHTML=`${u.uc?`<span class="badge">Under contract</span>`:""}<span class="st">${u.street==="Brown Lane"?"Courtyard home":u.street.replace(" Street"," St")}</span><b>${u.name}</b><span class="m">${u.bed} bed · ${u.bath} bath · ${fmt(u.total)} m²</span><span class="m">${u.star.toFixed(1)} ★ energy</span>`;
+  h.addEventListener("click",()=>{pick(u.n);go($("#plan"))});list.appendChild(h);
+  const o=document.createElement("option");o.textContent=u.name+(u.uc?" (under contract)":"");sel.appendChild(o);
+});
+document.querySelectorAll("#filters button").forEach(b=>b.addEventListener("click",()=>{
+  const f=b.dataset.f;
+  document.querySelectorAll("#filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const keep=u=>f==="all"||(f==="available"?!u.uc:u.street===f);
+  list.querySelectorAll(".home").forEach(h=>h.hidden=!keep(UNITS[h.dataset.n-1]));
+  svg.querySelectorAll("polygon").forEach(p=>p.classList.toggle("dim",!keep(UNITS[p.dataset.n-1])));
+  if(f!=="all")pick(UNITS.find(keep).n);
+}));
+function pick(n){
+  const u=UNITS[n-1];
+  svg.querySelectorAll("polygon").forEach(p=>p.classList.toggle("on",+p.dataset.n===n));
+  [fptabs,list].forEach(g=>g.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.n===n)));
+  const fp=$("#fpimg");fp.src=`assets/plans/${n}.jpg`;fp.alt="Floor plan of "+u.name;fp.dataset.cap=u.name+": floor plan (ground and first floor)";
+  sel.selectedIndex=n;
+  const out=[];
+  if(u.bal!=null) out.push(["Balcony",fmt(u.bal)+" m²"]);
+  if(u.court) out.push([n===9?"Private courtyard":"Rear courtyard",fmt(u.court)+" m²"]);
+  card.innerHTML=`
+    ${u.uc?`<span class="badge">Under contract</span>`:""}<div class="plaque"><small>${n===9?"Courtyard home":"Your name here"}</small><span>${u.name}</span></div>
+    <p class="where">${u.street} · ${u.aspect}</p>
+    <dl class="spec">
+      <dt>Bedrooms</dt><dd>${u.bed}</dd><dt>Bathrooms</dt><dd>${u.bath}</dd>
+      <dt>Ground floor</dt><dd>${fmt(u.gf)} m²</dd><dt>First floor</dt><dd>${fmt(u.ff)} m²</dd>
+      ${out.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}
+      <dt>Total incl. balcony</dt><dd>${fmt(u.total)} m²</dd>
+      <dt>Car space</dt><dd>1 × 2.5 × 5.4 m</dd>
+      <dt>Energy rating</dt><dd>${u.star.toFixed(1)} ★</dd>
+      <dt>Status</dt><dd>${u.uc?"Under contract":"Available"}</dd>
+      <dt>Price</dt><dd>${u.uc?"–":"In the information pack"}</dd>
+    </dl>
+    <div class="ctas"><a class="btn btn-dark" href="#plans">Floor plan</a><a class="btn btn-outline" href="#register">${u.uc?"Ask about similar homes":"Request this pack"}</a></div>`;
+}
+pick(1);
+
+/* ---------- gallery + viewer ---------- */
+const ggrid=$("#ggrid");let gset=GALLERY.slice(),vi=0;
+function drawGallery(f){
+  gset=GALLERY.filter(x=>f==="all"||x.g===f);ggrid.innerHTML="";
+  gset.forEach((x,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Open "+x.t+": "+x.d);
+    b.innerHTML=`<img src="assets/r/${x.f}.jpg" alt="" loading="lazy"><span class="tag">Render</span><span class="lbl">${x.t}</span>`;
+    b.addEventListener("click",()=>openViewer(i));ggrid.appendChild(b)});
+}
+document.querySelectorAll("#gfilters button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#gfilters button").forEach(x=>x.setAttribute("aria-pressed",x===b));drawGallery(b.dataset.g)}));
+drawGallery("all");
+const viewer=$("#viewer"),vImg=$("#v-img"),vMeta=$("#v-meta"),vCount=$("#v-count");let vlist=null;
+function show(){const x=vlist[vi];vImg.src=x.src;vImg.alt=x.t;vMeta.innerHTML="";const b=document.createElement("b");b.textContent=x.t;vMeta.append(b,document.createTextNode(" · "+x.d+" · "+x.note));vCount.textContent=vlist.length>1?(vi+1)+" / "+vlist.length:"";$("#v-prev").hidden=$("#v-next").hidden=vlist.length<2;}
+function openViewer(i,listOverride){vlist=listOverride||gset.map(x=>({src:`assets/r/${x.f}.jpg`,t:x.t,d:x.d,note:"Render: artist's impression, indicative only"}));vi=i;show();if(viewer.showModal)viewer.showModal();}
+const step=d=>{vi=(vi+d+vlist.length)%vlist.length;show()};
+$("#v-prev").addEventListener("click",()=>step(-1));$("#v-next").addEventListener("click",()=>step(1));
+$("#v-close").addEventListener("click",()=>viewer.close());
+viewer.addEventListener("keydown",e=>{if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
+viewer.addEventListener("click",e=>{if(e.target.classList.contains("vw")||e.target.tagName==="FIGURE")viewer.close()});
+let tx0=null;viewer.addEventListener("touchstart",e=>tx0=e.touches[0].clientX,{passive:true});
+viewer.addEventListener("touchend",e=>{if(tx0==null)return;const dx=e.changedTouches[0].clientX-tx0;if(Math.abs(dx)>50)step(dx<0?1:-1);tx0=null});
+$("#fpimg").addEventListener("click",()=>{const n=UNITS.findIndex(u=>$("#fpimg").src.endsWith(`/${u.n}.jpg`));openViewer(Math.max(0,n),UNITS.map(u=>({src:`assets/plans/${u.n}.jpg`,t:u.name,d:"Floor plan, ground and first floor",note:"Marketing plan, not a construction drawing"})))});
+
+/* ---------- make it yours ---------- */
+const plaqueText=$("#plaque-text"),nameIn=$("#name-in");
+// fit the name inside the plaque panel at any screen size
+const plBox=document.querySelector(".facade .pl");
+const setName=()=>{const v=nameIn.value.trim()||"Your name";plaqueText.textContent=v;
+  const w=plBox.clientWidth*0.88,h=plBox.clientHeight;let fs=h*0.62;plaqueText.style.fontSize=fs+"px";
+  const tw=plaqueText.scrollWidth;if(tw>w)plaqueText.style.fontSize=Math.max(6,fs*w/tw)+"px";};
+nameIn.addEventListener("input",setName);addEventListener("resize",setName);
+document.querySelector(".facade img").addEventListener("load",setName);setName();
+/* one interior (Trent, 16 Oct 2026): Sage only; v19 layout: heading, then render + finishes list */
+{ const s=SCHEMES[0], panel=$("#scheme");
+  panel.innerHTML=`<p class="eyebrow">Inside every home</p><h3 style="font-size:clamp(26px,3vw,34px);margin-top:6px">The interior: ${s.id}</h3>
+    <p style="max-width:66ch;margin-top:8px;color:var(--ink-2)">One designer interior for every terrace: sage cabinetry and panelling, a deep sage gloss splashback and shower wall, a deep forest-green bedroom and entry feature wall, a faux brick living-room wall, oak-look herringbone floors and brushed brass throughout.</p>
+    <div class="interior-grid fin">
+      <div><ul class="palette">${s.sw.map(([a,b,c])=>`<li><i style="background:${c}"></i><span><b>${a}</b>${b}</span></li>`).join("")}</ul>
+      <p class="cap" style="margin-top:12px">Colours on screen are approximate. Facades are council-approved. The full finishes schedule is in each information pack.</p></div>
+    </div>`; }
+
+/* ---------- location: zoomable aerial ---------- */
+const view=$("#mapview"),stage=$("#stage"),aerial=$("#aerial"),pcard=$("#pcard");
+let s=1,tx=0,ty=0,hr=false;
+const home=document.createElement("span");home.className="homemk";home.innerHTML="<i></i><b>6 Royal St</b>";home.style.left=AREA.site.x+"%";home.style.top=AREA.site.y+"%";stage.appendChild(home);
+fetch("assets/area/aerial_overlay.svg").then(r=>r.text()).then(t=>{$("#overlay").innerHTML=t;const sv=$("#overlay svg");if(sv){sv.setAttribute("preserveAspectRatio","none");apply()}}).catch(()=>{});
+const pins=AREA.places.map(p=>{const b=document.createElement("button");b.type="button";b.className="pin"+(p.approx?" approx":"");b.textContent=p.n;b.style.left=p.x+"%";b.style.top=p.y+"%";b.setAttribute("aria-label",p.name+", "+p.min+" minute walk");b.addEventListener("click",e=>{if(moved)return;choose(p.n,false)});stage.appendChild(b);return b});
+function clamp(){const W=view.clientWidth,H=view.clientHeight;tx=Math.min(0,Math.max(W-W*s,tx));ty=Math.min(0,Math.max(H-H*s,ty));}
+function placeHome(){const lab=home.querySelector("b"),pins=[...stage.querySelectorAll(".pin")].map(p=>p.getBoundingClientRect()),SIDES=["w","sw","nw","n","e","s"],set=c=>{home.classList.remove(...SIDES.slice(1));if(c!=="w")home.classList.add(c)};let best="w",bn=1e9;for(const c of SIDES){set(c);const r=lab.getBoundingClientRect(),n=pins.filter(p=>p.right>r.left-2&&p.left<r.right+2&&p.bottom>r.top-2&&p.top<r.bottom+2).length;if(n<bn){bn=n;best=c}if(!n)break}set(best);home.classList.toggle("nolab",bn>0)}   // first clear side; if none is clear, hide the label (the key names the gold dot)
+function apply(){clamp();stage.style.transform=`translate(${tx}px,${ty}px) scale(${s})`;stage.style.setProperty("--inv",1/s);stage.style.setProperty("--k",(1600/Math.max(1,view.clientWidth)).toFixed(3));if(s>1.5&&!hr){hr=true;aerial.src="assets/area/aerial_hr.jpg"};setTimeout(placeHome,80)}
+function zoomAt(f,cx,cy){const ns=Math.min(10,Math.max(1,s*f));tx=cx-(cx-tx)*ns/s;ty=cy-(cy-ty)*ns/s;s=ns;apply();$("#maphint").hidden=true;}
+function centreOn(xp,yp,ns){const W=view.clientWidth,H=view.clientHeight;s=ns;tx=W/2-xp/100*W*s;ty=H/2-yp/100*H*s;apply();}
+view.addEventListener("wheel",e=>{e.preventDefault();const r=view.getBoundingClientRect();zoomAt(Math.exp(-e.deltaY*0.0018),e.clientX-r.left,e.clientY-r.top)},{passive:false});
+view.addEventListener("dblclick",e=>{const r=view.getBoundingClientRect();zoomAt(2,e.clientX-r.left,e.clientY-r.top)});
+const ptrs=new Map();let moved=false,last=null,pinch=null;
+view.addEventListener("pointerdown",e=>{if(e.target.closest(".mapctl,.maplegend"))return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;last={x:e.clientX,y:e.clientY};if(ptrs.size===2){const [a,b]=[...ptrs.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y)}}});
+view.addEventListener("pointermove",e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(ptrs.size===2&&pinch){const [a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);const r=view.getBoundingClientRect();zoomAt(d/pinch.d,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top);pinch.d=d;moved=true;return}
+  const dx=e.clientX-last.x,dy=e.clientY-last.y;if(!moved&&Math.hypot(dx,dy)<4)return;
+  if(!moved){moved=true;view.setPointerCapture(e.pointerId);view.classList.add("drag")}
+  tx+=dx;ty+=dy;last={x:e.clientX,y:e.clientY};apply();});
+const up=e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;view.classList.remove("drag");setTimeout(()=>moved=false,0)};
+view.addEventListener("pointerup",up);view.addEventListener("pointercancel",up);
+$("#zin").addEventListener("click",()=>zoomAt(1.6,view.clientWidth/2,view.clientHeight/2));
+$("#zout").addEventListener("click",()=>zoomAt(1/1.6,view.clientWidth/2,view.clientHeight/2));
+$("#zreset").addEventListener("click",()=>{s=1;tx=0;ty=0;apply()});
+$("#ovt").addEventListener("change",e=>$("#overlay").style.opacity=e.target.checked?1:0);
+addEventListener("resize",apply);
+
+function choose(n,zoom){
+  const p=AREA.places[n-1];
+  pins.forEach((b,i)=>b.classList.toggle("on",i===n-1));
+  document.querySelectorAll(".place").forEach(r=>r.classList.toggle("on",+r.dataset.n===n));
+  const ph=p.photo?(p.stock?`<img src="assets/area/${p.photo}.jpg" alt=""><span class="tag">${p.local?"Toowoomba · stock photo":"Stock photo"}</span>`:`<img src="assets/area/places/${p.photo}.jpg" alt="${p.name}">`):"Photo to come";
+  pcard.innerHTML=`<div class="ph">${ph}</div><div class="bd"><span class="t">${p.min} min walk${p.approx?" (approx.)":""}</span><h3>${p.name}</h3><p>${p.kind}</p></div>`;
+  if(zoom)centreOn(p.x,p.y,Math.max(s,3));
+}
+const groups=["Food & shopping","Cafés & dining","Schools & childcare","Culture & parks"],placesEl=$("#places");
+groups.forEach(g=>{const col=document.createElement("div");col.className="g";col.innerHTML=`<h3>${g}</h3>`;
+  AREA.places.filter(p=>p.group===g).forEach(p=>{const r=document.createElement("button");r.type="button";r.className="place";r.dataset.n=p.n;
+    r.innerHTML=`<span class="no${p.approx?" approx":""}">${p.n}</span><span>${p.name}</span><span class="t">${p.min} min</span>`;
+    r.addEventListener("click",()=>{choose(p.n,true);go(view)});col.appendChild(r)});placesEl.appendChild(col)});
+choose(1,false);apply();
+
+/* ---------- rail highlight, form, comments ---------- */
+const rail=[...document.querySelectorAll("#rail a")];
+const railFor={vision:null,homes:"#homes",plans:"#homes",energy:"#energy",builder:"#builder",gallery:"#gallery",yours:"#yours",shared:"#location",location:"#location",register:"#register",notices:"#register"};
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const k=railFor[e.target.id];rail.forEach(a=>a.classList.toggle("on",a.getAttribute("href")===k))}}),{rootMargin:"-45% 0px -50% 0px"});
+  ["vision","gallery","homes","plans","location","register","notices"].map(id=>document.getElementById(id)).filter(Boolean).forEach(el=>io.observe(el));
+}
+const FORM="";
+$("#reg-form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const f=e.target,ok=$("#f-ok"),btn=f.querySelector("button[type=submit]"),v=id=>$(id).value.trim();
+  const say=(t,bad)=>{ok.textContent=t;ok.style.color=bad?"#9B2C2C":"";ok.hidden=false};
+  if(!v("#f-first")||(!v("#f-email")&&!v("#f-phone")))return say("Please add your name and an email or phone number.",true);
+  if(v("#f-email")&&!$("#f-email").checkValidity())return say("Please check your email address.",true);
+  if(!FORM)return say("Sorry, enquiries aren't connected yet. Please call Trent Macartney on 0411 940 010.",true);
+  const data={first_name:v("#f-first"),last_name:v("#f-last"),email:v("#f-email"),phone:v("#f-phone"),home:$("#f-terrace").value,buyer_type:$("#f-type").value,
+    future_updates:$("#f-updates").checked?"Yes":"No",source:"Website",_subject:"6 Royal St enquiry: "+$("#f-terrace").value,_gotcha:f._gotcha.value};
+  if(data.email)data._replyto=data.email;
+  btn.disabled=true;say("Sending…");
+  try{
+    const r=await fetch(FORM,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)});
+    if(!r.ok)throw new Error(r.status);
+    f.reset();say("Thank you. We'll be in touch shortly with the information pack.");
+  }catch(err){say("Sorry, that didn't send. Please call Trent Macartney on 0411 940 010.",true)}
+  finally{btn.disabled=false}
+});
+
+setInterval(placeHome,500);   // keeps the "6 Royal St" label off every pin through loading, zoom animations and resizes (20 rect checks, cheap)
+</script>
+</body>
+</html>
