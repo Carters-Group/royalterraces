@@ -359,7 +359,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
     <p class="lede">Painted facades, iron-lace balconies and front gardens, on a quiet corner a short walk from the heart of Toowoomba. Eight two-bedroom terraces and one courtyard home.</p>
     <div class="ctas">
       <a class="btn btn-light" href="#homes">Find your terrace</a>
-      <a class="btn btn-line" href="#register">Request an information pack</a>
+      <a class="btn btn-line" href="#register" data-pack>Download the information pack</a>
     </div>
   </div>
 </header>
@@ -459,6 +459,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
     </div>
     <div class="fptabs" id="fptabs" role="group" aria-label="Floor plan for"></div>
     <div class="fpbox"><img id="fpimg" src="assets/plans/1.jpg?v=20261020" alt="Floor plan of terrace 1" data-cap="Terrace 1: floor plan"><span class="tag">Marketing plan · not a construction drawing</span></div>
+    <p style="margin-top:14px"><a class="btn btn-dark" href="#register" data-pack="plan" id="fp-dl">Download this home's information pack</a></p>
   </div>
 </section>
 
@@ -563,8 +564,8 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
   <div class="wrap grid">
     <div class="head" style="margin:0">
       <p class="eyebrow">Register</p>
-      <h2 id="h-r">Request an information pack</h2>
-      <p>Choose a home and we'll send its pack: the floor plan and areas, where it sits on the site, the walking map, the Sage interior with the full finishes schedule, and the selection and plaque-name form.</p>
+      <h2 id="h-r">Download an information pack</h2>
+      <p>Choose a home, add your details and its pack downloads as soon as you send the form: the floor plan and areas, where it sits on the site, the walking map, the Sage interior with the full finishes schedule, and the selection and plaque-name form.</p>
     </div>
     <form id="reg-form" novalidate>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
@@ -580,7 +581,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
       <label class="full check"><input id="f-updates" type="checkbox"><span>Keep me updated about future TN Macartney Projects developments (optional; unsubscribe at any time).</span></label>
       <p class="full privacy">TN Macartney Projects Pty Ltd collects your details to send the pack you asked for and contact you about 6 Royal Street. We keep them in our enquiries register and share them only as our <a href="privacy.html">privacy policy</a> describes. It also explains how to see or correct your details and how to complain.</p>
       <div class="full" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-        <button class="btn btn-dark" type="submit">Request the pack</button>
+        <button class="btn btn-dark" type="submit">Send and download the pack</button>
         <span class="ok" id="f-ok" role="status" aria-live="polite" hidden></span>
       </div>
     </form>
@@ -712,7 +713,7 @@ function pick(n,fill=true){
       <dt>Status</dt><dd>${u.uc?"Under contract":"Available"}</dd>
       <dt>Price</dt><dd>${u.uc?"–":"On request"}</dd>
     </dl>
-    <div class="ctas"><a class="btn btn-dark" href="#plans">Floor plan</a><a class="btn btn-outline" href="#register">${u.uc?"Ask about similar homes":"Request this pack"}</a></div>`;
+    <div class="ctas"><a class="btn btn-dark" href="#plans">Floor plan</a><a class="btn btn-outline" href="#register" data-pack="${u.n}">${u.uc?"Ask about similar homes":"Download this home's pack"}</a></div>`;
 }
 pick(1,false);
 
@@ -758,6 +759,20 @@ document.querySelector(".facade img").addEventListener("load",setName);setName()
     <figure class="r" style="margin-top:28px"><button type="button" id="board-open" style="all:unset;display:block;cursor:zoom-in;position:relative;width:100%"><img src="assets/r/selections-board.jpg" alt="Sage interior selections board: sample pieces of the cabinetry and panelling, brushed brass, benchtop, oak dining top, splashback and shower tiles, herringbone floor, carpet, wet-area tiles, vanity top, faux brick, paint colours and balcony tiles, numbered against a key" loading="lazy" width="1216" height="864" style="border-radius:3px"><span class="tag">Selections board · indicative only</span></button>
       <figcaption class="cap">Selections board: every item is included in every home. Samples are indicative of colour and finish only.</figcaption></figure>`;
   $("#board-open").addEventListener("click",()=>openViewer(0,[{src:"assets/r/selections-board.jpg",t:"Selections board",d:"The Sage interior, included in every home",note:"Indicative of colour and finish only"}])); }
+
+/* ---------- information packs (v42, Trent): every download button leads to the enquiry form with the home chosen;
+   the pack downloads once the form is sent (live build), with links in the thank-you message as a fallback ---------- */
+const PACKS="assets/packs/",PACKV="?v=20261021",packUrl=n=>PACKS+"6-Royal-St-Information-Pack-Terrace-"+n+".pdf"+PACKV;
+document.addEventListener("click",e=>{const a=e.target.closest("a[data-pack]");if(!a)return;
+  let n=a.dataset.pack==="plan"?+(($("#fpimg").src.match(/plans\/(\d)\.jpg/)||[])[1]||0):+a.dataset.pack;
+  if(n)sel.selectedIndex=n+1;
+  setTimeout(()=>{const f=$("#f-first");if(f)f.focus({preventScroll:true})},600);});
+function deliverPack(home){   // returns the thank-you HTML; starts the download for a single home
+  const m=/Terrace (\d)/.exec(home||"");
+  if(!m)return "Thank you. Here are the information packs: "+UNITS.map(u=>`<a href="${packUrl(u.n)}" download>${u.name}</a>`).join(" · ")+".";
+  const a=document.createElement("a");a.href=packUrl(m[1]);a.download="6 Royal St - Information Pack - Terrace "+m[1]+".pdf";document.body.appendChild(a);a.click();a.remove();
+  return `Thank you. Your Terrace ${m[1]} information pack is downloading. If it doesn't start, <a href="${packUrl(m[1])}" download>download it here</a>.`;
+}
 
 /* ---------- location: zoomable aerial ---------- */
 const view=$("#mapview"),stage=$("#stage"),aerial=$("#aerial"),pcard=$("#pcard");
@@ -835,7 +850,7 @@ $("#reg-form").addEventListener("submit",async e=>{
   try{
     const r=await fetch(FORM,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)});
     if(!r.ok)throw new Error(r.status);
-    f.reset();say("Thank you. We'll be in touch shortly with the information pack.");
+    const home=$("#f-terrace").value;f.reset();say("");ok.innerHTML=deliverPack(home);   // v42 (Trent): the pack downloads once the enquiry is sent
   }catch(err){say("Sorry, that didn't send. Please call Trent Macartney on 0411 940 010.",true)}
   finally{btn.disabled=false}
 });
