@@ -86,6 +86,22 @@ section{scroll-margin-top:24px}
 .hero h1{font-size:clamp(38px,5.6vw,72px);max-width:14ch}
 .hero .lede{max-width:50ch;font-size:clamp(17px,1.5vw,19.5px);color:rgba(248,246,240,.95)}
 .hero .eyebrow{color:#E7CF9F}
+/* v41 (Trent): desktop text centred over the block wall, dark glow fading out left and right so the terraces show either side */
+@media (min-width:901px){
+  .hero::after{background:radial-gradient(ellipse 36% 78% at 52% 58%,rgba(10,16,12,.72) 0%,rgba(10,16,12,.5) 50%,rgba(10,16,12,0) 100%),linear-gradient(0deg,rgba(10,16,12,.35) 0%,rgba(10,16,12,0) 35%)}
+  .hero .wrap{justify-items:center;text-align:center}
+  .hero h1{max-width:15ch}
+  .hero .ctas{justify-content:center}
+}
+/* v41 (Trent): on phones the render sits above the text, framed on the Royal Street terraces rather than the block wall */
+@media (max-width:900px){
+  .hero{display:block;min-height:0}
+  .hero>.hero-img{position:relative;height:min(92vw,560px)}
+  .hero-img img{object-position:14% 50%}
+  .hero-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(0deg,#1b2520,rgba(27,37,32,0))}
+  .hero::after{display:none}
+  .hero .wrap{padding-block:18px 40px}
+}
 
 .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 .btn{display:inline-block;font:700 14px var(--body);letter-spacing:.04em;text-decoration:none;padding:13px 20px;border-radius:3px;border:1px solid transparent;cursor:pointer}
@@ -214,7 +230,7 @@ section{scroll-margin-top:24px}
 .mapwrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
 .mapview{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#2b2f2a;touch-action:none;cursor:grab;user-select:none}
 .mapview.drag{cursor:grabbing}
-.stage{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0;--inv:1}
+.stage{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0;--inv:1} /* width/height set in px by apply() (cover-fit of the 16:10 aerial) */
 .stage img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .stage .ov{position:absolute;inset:0;transition:opacity .2s;pointer-events:none}
 .stage .ov svg{position:absolute;inset:0;width:100%;height:100%}
@@ -241,6 +257,23 @@ section{scroll-margin-top:24px}
 .maplegend label{display:flex;align-items:center;gap:6px;font-weight:600;cursor:pointer;margin-bottom:2px}
 .maphint{position:absolute;left:10px;top:10px;z-index:2;background:rgba(16,22,18,.75);color:#F8F6F0;font-size:12.5px;border-radius:3px;padding:5px 9px}
 .credit{position:absolute;right:8px;bottom:6px;z-index:2;font-size:10.5px;color:#fff;text-shadow:0 1px 2px #000}
+.maplock{display:none}
+/* v41 (Trent): phone map. Taller view, key and place card under the map, and one finger scrolls the page until "Explore the map" is tapped */
+@media (max-width:900px){
+  .mapview{aspect-ratio:4/5;max-height:72vh}
+  .mapview.locked{touch-action:pan-y;cursor:default}
+  .maphint{display:none}
+  .maplock{display:block;position:absolute;left:50%;bottom:44px;transform:translateX(-50%);z-index:3;border:0;border-radius:999px;background:rgba(255,255,255,.95);color:#16201B;font:700 15px var(--body);padding:12px 20px;box-shadow:0 2px 10px rgba(0,0,0,.35);white-space:nowrap}
+  .mapview:not(.locked) .maplock{left:10px;top:10px;bottom:auto;transform:none;padding:9px 14px;font-size:14px}
+  .maplegend.below{position:static;background:var(--card);color:var(--ink);border:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 14px;padding:10px 12px;font-size:13px}
+  .maplegend.below label{width:100%;margin:0}
+  .credit{font-size:9.5px;left:8px;right:8px;text-align:right}
+  .mapwrap .pcard{grid-template-columns:118px minmax(0,1fr)}
+  .mapwrap .pcard .ph{aspect-ratio:auto;min-height:110px;height:100%;position:relative;overflow:hidden}
+  .mapwrap .pcard .ph img{position:absolute;inset:0}
+  .mapwrap .pcard .ph .tag{font-size:10px}
+  .mapwrap .pcard .bd{padding:10px 12px}
+}
 .pcard{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;display:grid}
 .pcard .ph{position:relative;aspect-ratio:4/3;background:var(--paper-2);display:grid;place-items:center;color:var(--ink-2);font-size:13.5px}
 .pcard .ph img{width:100%;height:100%;object-fit:cover}
@@ -501,7 +534,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
     <div class="head">
       <p class="eyebrow">Location</p>
       <h2 id="h-l">Everything you need, on foot</h2>
-      <p>Royal Street sits on the north edge of Toowoomba's city centre. The grocer and two cafés, The Baker's Duck and Ortem, are two minutes away, The Farm park and Grand Central five, the primary school seven; the CBD and a run of good cafés are all within ten. Scroll or pinch to zoom the aerial, drag to move, and click a numbered dot to see what's there. Streets are coloured by actual walking time from the front door.</p>
+      <p>Royal Street sits on the north edge of Toowoomba's city centre. The grocer and two cafés, The Baker's Duck and Ortem, are two minutes away, The Farm park and Grand Central five, the primary school seven; the CBD and a run of good cafés are all within ten. Zoom in on the aerial, drag to move, and tap a numbered dot to see what's there (on a phone, tap "Explore the map" first). Streets are coloured by actual walking time from the front door.</p>
     </div>
     <div class="mapwrap">
       <div class="mapview" id="mapview" aria-label="Aerial map of the area around 6 Royal Street">
@@ -510,6 +543,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
           <div class="ov" id="overlay" aria-hidden="true"></div>
         </div>
         <span class="maphint" id="maphint">Scroll to zoom · drag to move</span>
+        <button type="button" class="maplock" id="maplock">Explore the map</button>
         <div class="mapctl"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">−</button><button type="button" id="zreset" aria-label="Show the whole area" style="font-size:15px">⤢</button></div>
         <div class="maplegend">
           <label><input type="checkbox" id="ovt" checked> Walking times</label>
@@ -731,25 +765,33 @@ let s=1,tx=0,ty=0,hr=false;
 const home=document.createElement("span");home.className="homemk";home.innerHTML="<i></i><b>6 Royal St</b>";home.style.left=AREA.site.x+"%";home.style.top=AREA.site.y+"%";stage.appendChild(home);
 fetch("assets/area/aerial_overlay.svg").then(r=>r.text()).then(t=>{$("#overlay").innerHTML=t;const sv=$("#overlay svg");if(sv){sv.setAttribute("preserveAspectRatio","none");apply()}}).catch(()=>{});
 const pins=AREA.places.map(p=>{const b=document.createElement("button");b.type="button";b.className="pin"+(p.approx?" approx":"");b.textContent=p.n;b.style.left=p.x+"%";b.style.top=p.y+"%";b.setAttribute("aria-label",p.name+", "+p.min+" minute walk");b.addEventListener("click",e=>{if(moved)return;choose(p.n,false)});stage.appendChild(b);return b});
-function clamp(){const W=view.clientWidth,H=view.clientHeight;tx=Math.min(0,Math.max(W-W*s,tx));ty=Math.min(0,Math.max(H-H*s,ty));}
+let SW=1,SH=1;function fit(){const W=view.clientWidth,H=view.clientHeight;if(W/H>1.6){SW=W;SH=W/1.6}else{SH=H;SW=H*1.6}stage.style.width=SW+"px";stage.style.height=SH+"px"}  // cover-fit of the 16:10 aerial
+function clamp(){const W=view.clientWidth,H=view.clientHeight;tx=Math.min(0,Math.max(W-SW*s,tx));ty=Math.min(0,Math.max(H-SH*s,ty));}
 function placeHome(){const lab=home.querySelector("b"),pins=[...stage.querySelectorAll(".pin")].map(p=>p.getBoundingClientRect()),SIDES=["w","sw","nw","n","e","s"],set=c=>{home.classList.remove(...SIDES.slice(1));if(c!=="w")home.classList.add(c)};let best="w",bn=1e9;for(const c of SIDES){set(c);const r=lab.getBoundingClientRect(),n=pins.filter(p=>p.right>r.left-2&&p.left<r.right+2&&p.bottom>r.top-2&&p.top<r.bottom+2).length;if(n<bn){bn=n;best=c}if(!n)break}set(best);home.classList.toggle("nolab",bn>0)}   // first clear side; if none is clear, hide the label (the key names the gold dot)
-function apply(){clamp();stage.style.transform=`translate(${tx}px,${ty}px) scale(${s})`;stage.style.setProperty("--inv",1/s);stage.style.setProperty("--k",(1600/Math.max(1,view.clientWidth)).toFixed(3));if(s>1.5&&!hr){hr=true;aerial.src="assets/area/aerial_hr.jpg"};setTimeout(placeHome,80)}
+function apply(){fit();clamp();stage.style.transform=`translate(${tx}px,${ty}px) scale(${s})`;stage.style.setProperty("--inv",1/s);stage.style.setProperty("--k",(1600/Math.max(1,SW)).toFixed(3));if(s>1.5&&!hr){hr=true;aerial.src="assets/area/aerial_hr.jpg"};setTimeout(placeHome,80)}
 function zoomAt(f,cx,cy){const ns=Math.min(10,Math.max(1,s*f));tx=cx-(cx-tx)*ns/s;ty=cy-(cy-ty)*ns/s;s=ns;apply();$("#maphint").hidden=true;}
-function centreOn(xp,yp,ns){const W=view.clientWidth,H=view.clientHeight;s=ns;tx=W/2-xp/100*W*s;ty=H/2-yp/100*H*s;apply();}
+function centreOn(xp,yp,ns){fit();const W=view.clientWidth,H=view.clientHeight;s=ns;tx=W/2-xp/100*SW*s;ty=H/2-yp/100*SH*s;apply();}
 view.addEventListener("wheel",e=>{e.preventDefault();const r=view.getBoundingClientRect();zoomAt(Math.exp(-e.deltaY*0.0018),e.clientX-r.left,e.clientY-r.top)},{passive:false});
-view.addEventListener("dblclick",e=>{const r=view.getBoundingClientRect();zoomAt(2,e.clientX-r.left,e.clientY-r.top)});
+view.addEventListener("dblclick",e=>{if(view.classList.contains("locked"))return;const r=view.getBoundingClientRect();zoomAt(2,e.clientX-r.left,e.clientY-r.top)});
 const ptrs=new Map();let moved=false,last=null,pinch=null;
-view.addEventListener("pointerdown",e=>{if(e.target.closest(".mapctl,.maplegend"))return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;last={x:e.clientX,y:e.clientY};if(ptrs.size===2){const [a,b]=[...ptrs.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y)}}});
+view.addEventListener("pointerdown",e=>{if(e.target.closest(".mapctl,.maplegend,.maplock")||view.classList.contains("locked"))return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;last={x:e.clientX,y:e.clientY};if(ptrs.size===2){const [a,b]=[...ptrs.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y)}}});
 view.addEventListener("pointermove",e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
   if(ptrs.size===2&&pinch){const [a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);const r=view.getBoundingClientRect();zoomAt(d/pinch.d,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top);pinch.d=d;moved=true;return}
   const dx=e.clientX-last.x,dy=e.clientY-last.y;if(!moved&&Math.hypot(dx,dy)<4)return;
-  if(!moved){moved=true;view.setPointerCapture(e.pointerId);view.classList.add("drag")}
+  if(!moved){moved=true;try{view.setPointerCapture(e.pointerId)}catch(_){}view.classList.add("drag")}
   tx+=dx;ty+=dy;last={x:e.clientX,y:e.clientY};apply();});
 const up=e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;view.classList.remove("drag");setTimeout(()=>moved=false,0)};
 view.addEventListener("pointerup",up);view.addEventListener("pointercancel",up);
 $("#zin").addEventListener("click",()=>zoomAt(1.6,view.clientWidth/2,view.clientHeight/2));
 $("#zout").addEventListener("click",()=>zoomAt(1/1.6,view.clientWidth/2,view.clientHeight/2));
-$("#zreset").addEventListener("click",()=>{s=1;tx=0;ty=0;apply()});
+$("#zreset").addEventListener("click",()=>centreOn(AREA.site.x,AREA.site.y,1));
+/* phones: page scrolls over the map until it's unlocked; the key moves under the map (below the place card) */
+const phone=matchMedia("(max-width:900px)"),legend=view.querySelector(".maplegend"),lockBtn=$("#maplock");
+function setLock(on){view.classList.toggle("locked",on);lockBtn.textContent=on?"Explore the map":"Done";}
+lockBtn.addEventListener("click",()=>setLock(!view.classList.contains("locked")));
+["#zin","#zout"].forEach(id=>$(id).addEventListener("click",()=>{if(phone.matches)setLock(false)}));
+function layoutMap(){if(phone.matches){pcard.after(legend);legend.classList.add("below");setLock(true)}else{view.appendChild(legend);legend.classList.remove("below");view.classList.remove("locked")}centreOn(AREA.site.x,AREA.site.y,1)}
+phone.addEventListener("change",layoutMap);
 $("#ovt").addEventListener("change",e=>$("#overlay").style.opacity=e.target.checked?1:0);
 addEventListener("resize",apply);
 
@@ -766,7 +808,7 @@ groups.forEach(g=>{const col=document.createElement("div");col.className="g";col
   AREA.places.filter(p=>p.group===g).forEach(p=>{const r=document.createElement("button");r.type="button";r.className="place";r.dataset.n=p.n;
     r.innerHTML=`<span class="no${p.approx?" approx":""}">${p.n}</span><span>${p.name}</span><span class="t">${p.min} min</span>`;
     r.addEventListener("click",()=>{choose(p.n,true);go(view)});col.appendChild(r)});placesEl.appendChild(col)});
-choose(1,false);apply();
+choose(1,false);layoutMap();
 
 /* ---------- rail highlight, form, comments ---------- */
 const rail=[...document.querySelectorAll("#rail a")];
