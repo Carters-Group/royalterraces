@@ -428,7 +428,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
     <div class="head">
       <p class="eyebrow">The homes</p>
       <h2 id="h-h">Find your terrace</h2>
-      <p>Five homes are available and four are under contract. Filter by street or availability, then pick a home on the site plan. North is to the right of the plan.</p>
+      <p>All nine homes are available. Filter by street or availability, then pick a home on the site plan. North is to the right of the plan.</p>
     </div>
     <div class="filters" id="filters" role="group" aria-label="Filter homes">
       <button type="button" data-f="all" aria-pressed="true">All nine</button>
@@ -578,7 +578,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
       <label>Phone<input id="f-phone" type="tel" autocomplete="off" required></label>
       <label class="full">Home of interest<select id="f-terrace" required><option value="" selected disabled>Choose a home</option><option>Any home</option></select></label>
       <label class="full">I am<select id="f-type" required><option value="" selected disabled>Choose one</option><option>Buying to live in</option><option>Investing</option><option>Downsizing</option><option>Just browsing</option></select></label>
-      <label class="full">Budget<select id="f-budget" required><option value="" selected disabled>Choose a range</option><option>$700k to $900k</option><option>$900k to $1m</option><option>$1m and above</option></select></label>
+      <label class="full">Budget<select id="f-budget" required><option value="" selected disabled>Choose a range</option><option>$700k to $900k</option><option>$900k to $1m</option><option>$1m to $1.2m</option><option>$1.2m and above</option></select></label>
       <label class="full">Finance approved, or funds to complete?<select id="f-finance" required><option value="" selected disabled>Choose one</option><option>Yes, finance approved</option><option>Yes, sufficient funds to complete</option><option>Not yet</option></select></label>
       <label class="full check"><input id="f-updates" type="checkbox"><span>Keep me updated about future TN Macartney Projects developments (optional; unsubscribe at any time).</span></label>
       <p class="full privacy">TN Macartney Projects Pty Ltd collects your details to send the pack you asked for and contact you about 6 Royal Street. We keep them in our enquiries register and share them only as our <a href="privacy.html">privacy policy</a> describes. It also explains how to see or correct your details and how to complain.</p>
@@ -610,7 +610,7 @@ dialog::backdrop{background:rgba(8,12,10,.94)}
     <p><strong>6 Royal Street, Toowoomba City QLD 4350</strong> · Lots 17–18 on D13362 · Development approval PDA/2026/4242, decided 16 September 2026.</p>
     <p>Enquiries: Trent Macartney · <a href="tel:+61411940010">0411 940 010</a> · <a href="mailto:trent@cartersinvestments.com.au">trent@cartersinvestments.com.au</a></p>
     <p>Developer and seller: TN Macartney Projects Pty Ltd · ABN 68 657 387 258 · <a href="privacy.html">Privacy policy</a></p>
-    <p>Architecture: Van Heerden Design Studio · Landscape: Evan Prentice · Aerial imagery © State of Queensland (CC BY 4.0) · Map data © OpenStreetMap contributors</p>
+    <p>Design: Trent Macartney in collaboration with Van Heerden Design Studio · Landscape: Evan Prentice · Aerial imagery © State of Queensland (CC BY 4.0) · Map data © OpenStreetMap contributors</p>
   </div>
 </footer>
 
@@ -636,7 +636,7 @@ const UNITS=[
  {n:7,street:"Snell Street",aspect:"West-north-west facing balcony and a private rear courtyard",bed:2,bath:"2",gf:49.5,ff:53.8,bal:11.6,court:5.5,total:114.9,star:7.9},
  {n:8,street:"Snell Street",aspect:"West-north-west facing balcony",bed:2,bath:"2",gf:49.5,ff:53.8,bal:11.6,total:114.9,star:7.8},
  {n:9,street:"Brown Lane",aspect:"One-bedroom courtyard home with an east-facing private courtyard",bed:1,bath:"1 + powder",gf:34.4,ff:36.3,bal:null,court:25.11,total:70.6,star:8.4}
-].map(u=>({...u,name:"Terrace "+u.n,uc:[3,4,7,8].includes(u.n)}));
+].map(u=>({...u,name:"Terrace "+u.n,uc:[].includes(u.n)}));
 const FOOT={"1":[[1348.2,1123.8],[1615.8,1154.8],[1602,1274.2],[1406.7,1274],[1400.7,1273.4],[1402.8,1255.5],[1333.9,1247.5]],"2":[[1363.1,988.1],[1648.4,1021.1],[1632.7,1156.7],[1347.4,1123.7]],"3":[[1378.7,853],[1674.9,887.3],[1659.3,1022.4],[1363.1,988.1]],"4":[[1404.9,719.2],[1710.4,754.5],[1694.8,889.6],[1389.2,854.3]],"5":[[1420.5,584.1],[1725.6,619.4],[1709.9,754.5],[1404.9,719.2]],"6":[[598,790.8],[598,496.2],[736.7,496.2],[736.7,790.8]],"7":[[736.7,790.8],[736.7,496.2],[872.8,496.2],[872.8,790.8]],"8":[[872.8,817.8],[872.8,523.1],[1011.6,523.1],[1011.6,817.8]],"9":[[600.4,898.6],[812.6,898.6],[812.6,1028.8],[600.4,1028.8]]};
 const GALLERY=[
  {f:"whole-facade",g:"out",t:"Royal and Snell Streets",d:"The whole development from the corner"},
@@ -764,7 +764,7 @@ document.querySelector(".facade img").addEventListener("load",setName);setName()
 
 /* ---------- information packs (v42, Trent): every download button leads to the enquiry form with the home chosen;
    the pack downloads once the form is sent (live build), with links in the thank-you message as a fallback ---------- */
-const PACKS="assets/packs/",PACKV="?v=20261021",packUrl=n=>PACKS+"6-Royal-St-Information-Pack-Terrace-"+n+".pdf"+PACKV;
+const PACKS="assets/packs/",PACKV="?v=20261026",packUrl=n=>PACKS+"6-Royal-St-Information-Pack-Terrace-"+n+".pdf"+PACKV;
 document.addEventListener("click",e=>{const a=e.target.closest("a[data-pack]");if(!a)return;
   let n=a.dataset.pack==="plan"?+(($("#fpimg").src.match(/plans\/(\d)\.jpg/)||[])[1]||0):+a.dataset.pack;
   if(n)sel.selectedIndex=n+1;
