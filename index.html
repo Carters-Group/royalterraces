@@ -850,6 +850,7 @@ $("#reg-form").addEventListener("submit",async e=>{
   f.querySelectorAll("[required]").forEach(el=>el.setAttribute("aria-invalid",String(!el.value.trim())));
   if(need.length)return say("Please add your "+need.map(n=>n[1]).join(", ").replace(/, ([^,]*)$/," and $1")+".",true);
   if(!$("#f-email").checkValidity())return say("Please check your email address.",true);
+  if(v("#f-phone").replace(/\D/g,"").length<8){$("#f-phone").setAttribute("aria-invalid","true");return say("Please check your phone number (at least 8 digits).",true)}
   if(!FORM)return say("Sorry, enquiries aren't connected yet. Please call Trent Macartney on 0411 940 010.",true);
   const data={first_name:v("#f-first"),last_name:v("#f-last"),email:v("#f-email"),phone:v("#f-phone"),home:$("#f-terrace").value,buyer_type:$("#f-type").value,
     budget:v("#f-budget"),finance:v("#f-finance"),
