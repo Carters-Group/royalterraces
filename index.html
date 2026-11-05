@@ -86,13 +86,14 @@ section{scroll-margin-top:24px}
 .hero h1{font-size:clamp(38px,5.6vw,72px);max-width:14ch}
 .hero .lede{max-width:50ch;font-size:clamp(17px,1.5vw,19.5px);color:rgba(248,246,240,.95)}
 .hero .eyebrow{color:#E7CF9F}
-.hero .urgent-btn{display:inline-flex;align-items:center;gap:10px;font:700 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#16201B;background:#E7CF9F;padding:12px 18px;border-radius:3px;box-shadow:0 2px 14px rgba(0,0,0,.3)}
-.hero .urgent-btn:hover{background:#F1DDB4}
-.hero .urgent-btn .dot{width:8px;height:8px;border-radius:50%;background:#8A6630;animation:urgpulse 1.8s ease-in-out infinite}
-@keyframes urgpulse{50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.hero .urgent-btn .dot{animation:none}}
-.hero .urgent-btn .arr{font-size:16px;letter-spacing:0}
-@media (max-width:900px){.hero .urgent-btn{justify-self:start;font-size:12px;letter-spacing:.07em;padding:11px 14px;gap:8px;white-space:nowrap}}
+.urgent-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:clamp(20px,2.4vw,26px) 0;border-bottom:1px solid var(--line)}
+.btn.urgent-btn{display:inline-flex;align-items:center;gap:10px}
+.urgent-btn .dot{width:8px;height:8px;border-radius:50%;background:#E7CF9F;flex:none;animation:urgpulse 1.8s ease-in-out infinite}
+@keyframes urgpulse{50%{opacity:.3}}
+@media (prefers-reduced-motion:reduce){.urgent-btn .dot{animation:none}}
+.urgent-btn .arr{font-size:16px;line-height:1}
+.urgent-row .note{font-size:14px;color:var(--ink-2)}
+.urgent-row .note b{color:var(--ink);font-weight:600}
 /* v41 (Trent): desktop text centred over the block wall, dark glow fading out left and right so the terraces show either side */
 @media (min-width:901px){
   .hero::after{background:radial-gradient(ellipse 36% 78% at 52% 58%,rgba(10,16,12,.72) 0%,rgba(10,16,12,.5) 50%,rgba(10,16,12,0) 100%),linear-gradient(0deg,rgba(10,16,12,.35) 0%,rgba(10,16,12,0) 35%)}
@@ -376,8 +377,6 @@ fbq('init','1773499650587910');fbq('track','PageView');
 <header class="hero" id="top">
   <div class="hero-img"><img src="assets/r/whole-facade.jpg" alt="The whole development from the corner of Royal and Snell Streets: painted heritage terraces with iron-lace balconies on Royal Street, a planted side wall and timber pergola at the driveway, and the Snell Street terraces beyond"><span class="tag">Render · artist's impression</span></div>
   <div class="wrap">
-    <!-- URGENCY button (v50, Trent 5 Nov 2026): goes to the Register section -->
-    <a class="urgent-btn" href="#register"><span class="dot" aria-hidden="true"></span>Strong interest · Register now<span class="arr" aria-hidden="true">→</span></a>
     <p class="eyebrow">Royal Street · Toowoomba City</p>
     <h1>Nine heritage-inspired terraces on Royal Street</h1>
     <p class="lede">Painted facades, iron-lace balconies and front gardens, on a quiet corner a short walk from the heart of Toowoomba. Eight two-bedroom terraces and one courtyard home.</p>
@@ -396,6 +395,8 @@ fbq('init','1773499650587910');fbq('track','PageView');
     <div role="listitem"><b>7.9 stars</b><span>average energy rating (7.1 to 8.4 across the nine homes)</span></div>
     <div role="listitem"><b>Prices</b><span>on request</span></div>
   </div>
+  <!-- URGENCY button (v52 restyle: site button style, left, with note; v51, Trent 5 Nov 2026: below the stats row; was in the hero in v50). Goes to the Register section -->
+  <div class="urgent-row"><a class="btn btn-dark urgent-btn" href="#register"><span class="dot" aria-hidden="true"></span>Strong interest · Register now<span class="arr" aria-hidden="true">→</span></a><span class="note"><b>Pricing released mid&#8209;November.</b> Registrations get first option before the open market in December.</span></div>
 </div>
 
 <!-- Vision -->
