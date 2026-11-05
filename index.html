@@ -86,6 +86,13 @@ section{scroll-margin-top:24px}
 .hero h1{font-size:clamp(38px,5.6vw,72px);max-width:14ch}
 .hero .lede{max-width:50ch;font-size:clamp(17px,1.5vw,19.5px);color:rgba(248,246,240,.95)}
 .hero .eyebrow{color:#E7CF9F}
+.hero .urgent-btn{display:inline-flex;align-items:center;gap:10px;font:700 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#16201B;background:#E7CF9F;padding:12px 18px;border-radius:3px;box-shadow:0 2px 14px rgba(0,0,0,.3)}
+.hero .urgent-btn:hover{background:#F1DDB4}
+.hero .urgent-btn .dot{width:8px;height:8px;border-radius:50%;background:#8A6630;animation:urgpulse 1.8s ease-in-out infinite}
+@keyframes urgpulse{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.hero .urgent-btn .dot{animation:none}}
+.hero .urgent-btn .arr{font-size:16px;letter-spacing:0}
+@media (max-width:900px){.hero .urgent-btn{justify-self:start;font-size:12px;letter-spacing:.07em;padding:11px 14px;gap:8px;white-space:nowrap}}
 /* v41 (Trent): desktop text centred over the block wall, dark glow fading out left and right so the terraces show either side */
 @media (min-width:901px){
   .hero::after{background:radial-gradient(ellipse 36% 78% at 52% 58%,rgba(10,16,12,.72) 0%,rgba(10,16,12,.5) 50%,rgba(10,16,12,0) 100%),linear-gradient(0deg,rgba(10,16,12,.35) 0%,rgba(10,16,12,0) 35%)}
@@ -299,6 +306,12 @@ form .full{grid-column:1/-1}
 form label{display:grid;gap:5px;font-size:14px;color:var(--ink-2)}
 form label.check{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5}
 form label.check input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:var(--green)}
+.reg .urgent{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:center;margin-inline:-32px;padding:clamp(26px,3vw,36px) 32px;background:var(--paper);border-top:3px solid var(--brass)}
+.reg .urgent .t{display:grid;gap:10px}
+.reg .urgent h2{font-size:clamp(25px,2.3vw,30px);line-height:1.2}
+.reg .grid>.head{align-self:start}
+.reg .urgent p{margin:0;font-size:clamp(16.5px,1.4vw,18.5px);line-height:1.6}
+@media (max-width:900px){.reg .urgent{grid-template-columns:minmax(0,1fr);gap:12px;margin-inline:0;padding-inline:clamp(18px,4vw,28px)}}
 .reg .privacy{font-size:13.5px;color:var(--ink-2);line-height:1.55}
 form input,form select{font:400 16px var(--body);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:11px 12px;width:100%}
 .ok{font-size:14.5px;color:var(--green);font-weight:600}
@@ -363,6 +376,8 @@ fbq('init','1773499650587910');fbq('track','PageView');
 <header class="hero" id="top">
   <div class="hero-img"><img src="assets/r/whole-facade.jpg" alt="The whole development from the corner of Royal and Snell Streets: painted heritage terraces with iron-lace balconies on Royal Street, a planted side wall and timber pergola at the driveway, and the Snell Street terraces beyond"><span class="tag">Render · artist's impression</span></div>
   <div class="wrap">
+    <!-- URGENCY button (v50, Trent 5 Nov 2026): goes to the Register section -->
+    <a class="urgent-btn" href="#register"><span class="dot" aria-hidden="true"></span>Strong interest · Register now<span class="arr" aria-hidden="true">→</span></a>
     <p class="eyebrow">Royal Street · Toowoomba City</p>
     <h1>Nine heritage-inspired terraces on Royal Street</h1>
     <p class="lede">Painted facades, iron-lace balconies and front gardens, on a quiet corner a short walk from the heart of Toowoomba. Eight two-bedroom terraces and one courtyard home.</p>
@@ -571,9 +586,16 @@ fbq('init','1773499650587910');fbq('track','PageView');
 <!-- Register -->
 <section class="sec reg" id="register" aria-labelledby="h-r">
   <div class="wrap grid">
+    <!-- URGENCY (v49 layout; v48, Trent 5 Nov 2026) -->
+    <div class="urgent">
+      <div class="t">
+        <p class="eyebrow">Strong interest · register now</p>
+        <h2 id="h-r">Pricing released mid&#8209;November.<br> Registrations get first option.</h2>
+      </div>
+      <p>We are experiencing a lot of interest in these terraces. Pricing will be released by mid-November, and registrations get the first option on their terrace before the open market in December.</p>
+    </div>
     <div class="head" style="margin:0">
-      <p class="eyebrow">Register</p>
-      <h2 id="h-r">Download an information pack</h2>
+      <h3 style="font-size:clamp(21px,2vw,25px);margin:0 0 8px">Download an information pack</h3>
       <p>Choose a home, add your details and its pack downloads as soon as you send the form: the floor plan and areas, where it sits on the site, the walking map, the Sage interior with the full finishes schedule, and the selection and plaque-name form.</p>
     </div>
     <form id="reg-form" novalidate>
