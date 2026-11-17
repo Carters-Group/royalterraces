@@ -815,6 +815,7 @@ document.addEventListener("click",e=>{const a=e.target.closest("a[data-pack]");i
   if(n)sel.selectedIndex=n+1;
   setTimeout(()=>{const f=$("#f-first");if(f)f.focus({preventScroll:true})},600);});
 function deliverPack(home){   // returns the thank-you HTML; starts the download for a single home
+  if(REG_CLOSED){$("#closed-dlg").showModal();return "Thank you, your details have been sent to Trent.";}   // CLOSED (v55)
   const m=/Terrace (\d)/.exec(home||"");
   if(!m)return "Thank you. Here are the information packs: "+UNITS.map(u=>`<a href="${packUrl(u.n)}" download>${u.name}</a>`).join(" · ")+".";
   const a=document.createElement("a");a.href=packUrl(m[1]);a.download="6 Royal St - Information Pack - Terrace "+m[1]+".pdf";document.body.appendChild(a);a.click();a.remove();
@@ -879,8 +880,8 @@ if("IntersectionObserver" in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const k=railFor[e.target.id];rail.forEach(a=>a.classList.toggle("on",a.getAttribute("href")===k))}}),{rootMargin:"-45% 0px -50% 0px"});
   ["vision","gallery","homes","plans","location","register","notices"].map(id=>document.getElementById(id)).filter(Boolean).forEach(el=>io.observe(el));
 }
-// CLOSED (v54): registrations closed. Capture-phase listener runs first and stops the form being sent.
-document.addEventListener("submit",e=>{if(e.target.id!=="reg-form")return;e.preventDefault();e.stopImmediatePropagation();$("#closed-dlg").showModal();},true);
+// CLOSED (v55, Trent 17 Nov 2026): the form still sends the enquiry to Trent; once it has gone, deliverPack shows the closed popup instead of downloading a pack.
+const REG_CLOSED=true;
 $("#closed-x").addEventListener("click",()=>$("#closed-dlg").close());
 $("#closed-dlg").addEventListener("click",e=>{if(e.target.id==="closed-dlg")$("#closed-dlg").close()});
 const FORM="https://formspree.io/f/xbgdeqdr";
