@@ -326,6 +326,12 @@ footer .wrap{display:grid;gap:10px}
 /* viewer */
 dialog{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#EDEAE0}
 dialog::backdrop{background:rgba(8,12,10,.94)}
+dialog.closed-dlg{width:min(92vw,480px);height:fit-content;max-height:90vh;margin:auto;background:var(--paper);color:var(--ink);border-radius:6px;border-top:3px solid var(--brass)}
+dialog.closed-dlg::backdrop{background:rgba(8,12,10,.6)}
+.closed-dlg .cd{padding:clamp(22px,4vw,32px);display:grid;gap:14px}
+.closed-dlg h2{margin:0;font-size:clamp(22px,2.2vw,26px);line-height:1.2}
+.closed-dlg p{margin:0;font-size:17px;line-height:1.6}
+.closed-dlg .cd-b{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 .vw{position:relative;width:100%;height:100%;display:grid;grid-template-rows:1fr auto;padding:56px 70px 16px}
 .vw figure{margin:0;display:grid;place-items:center;min-height:0}
 .vw img{max-width:100%;max-height:calc(100vh - 150px);width:auto;height:auto;background:#fff}
@@ -395,8 +401,8 @@ fbq('init','1773499650587910');fbq('track','PageView');
     <div role="listitem"><b>7.9 stars</b><span>average energy rating (7.1 to 8.4 across the nine homes)</span></div>
     <div role="listitem"><b>Prices</b><span>on request</span></div>
   </div>
-  <!-- URGENCY button (v52 restyle: site button style, left, with note; v51, Trent 5 Nov 2026: below the stats row; was in the hero in v50). Goes to the Register section -->
-  <div class="urgent-row"><a class="btn btn-dark urgent-btn" href="#register"><span class="dot" aria-hidden="true"></span>Strong interest · Register now<span class="arr" aria-hidden="true">→</span></a><span class="note"><b>Pricing released mid&#8209;November.</b> Registrations get first option before the open market in December.</span></div>
+  <!-- CLOSED (v54, Trent 17 Nov 2026: registrations closed, oversubscribed). URGENCY button (v52 restyle: site button style, left, with note; v51, Trent 5 Nov 2026: below the stats row; was in the hero in v50). Goes to the Register section -->
+  <div class="urgent-row"><a class="btn btn-dark urgent-btn" href="#register"><span class="dot" aria-hidden="true"></span>Registrations closed · Oversubscribed<span class="arr" aria-hidden="true">→</span></a><span class="note"><b>Registrations have been oversubscribed.</b> Genuinely interested in a terrace? Call Trent on <a href="tel:+61411940010">0411&nbsp;940&nbsp;010</a>.</span></div>
 </div>
 
 <!-- Vision -->
@@ -587,13 +593,13 @@ fbq('init','1773499650587910');fbq('track','PageView');
 <!-- Register -->
 <section class="sec reg" id="register" aria-labelledby="h-r">
   <div class="wrap grid">
-    <!-- URGENCY (v49 layout; v48, Trent 5 Nov 2026) -->
+    <!-- CLOSED (v54, Trent 17 Nov 2026). URGENCY (v49 layout; v48, Trent 5 Nov 2026) -->
     <div class="urgent">
       <div class="t">
-        <p class="eyebrow">Strong interest · register now</p>
-        <h2 id="h-r">Pricing released mid&#8209;November.<br> Registrations get first option.</h2>
+        <p class="eyebrow">Registrations closed</p>
+        <h2 id="h-r">Registrations have been oversubscribed.</h2>
       </div>
-      <p>We are experiencing a lot of interest in these terraces. Pricing will be released by mid-November, and registrations get the first option on their terrace before the open market in December.</p>
+      <p>Thank you for the strong interest in these terraces. Registrations are now closed. If you are genuinely interested in a terrace, please call Trent on <a href="tel:+61411940010"><b>0411&nbsp;940&nbsp;010</b></a>.</p>
     </div>
     <div class="head" style="margin:0">
       <h3 style="font-size:clamp(21px,2vw,25px);margin:0 0 8px">Download an information pack</h3>
@@ -643,6 +649,15 @@ fbq('init','1773499650587910');fbq('track','PageView');
     <p>Design: Trent Macartney in collaboration with Van Heerden Design Studio · Landscape: Evan Prentice · Aerial imagery © State of Queensland (CC BY 4.0) · Map data © OpenStreetMap contributors</p>
   </div>
 </footer>
+
+<!-- CLOSED popup (v54): shown instead of sending the form -->
+<dialog id="closed-dlg" class="closed-dlg" aria-labelledby="closed-h">
+  <div class="cd">
+    <h2 id="closed-h">Registrations are closed</h2>
+    <p>Registrations have been oversubscribed, but if you are genuinely interested in a terrace, please call Trent on <b>0411&nbsp;940&nbsp;010</b>.</p>
+    <div class="cd-b"><a class="btn btn-dark" href="tel:+61411940010">Call Trent</a><button class="btn btn-outline" type="button" id="closed-x">Close</button></div>
+  </div>
+</dialog>
 
 <dialog id="viewer" aria-label="Image viewer">
   <div class="vw">
@@ -864,6 +879,10 @@ if("IntersectionObserver" in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const k=railFor[e.target.id];rail.forEach(a=>a.classList.toggle("on",a.getAttribute("href")===k))}}),{rootMargin:"-45% 0px -50% 0px"});
   ["vision","gallery","homes","plans","location","register","notices"].map(id=>document.getElementById(id)).filter(Boolean).forEach(el=>io.observe(el));
 }
+// CLOSED (v54): registrations closed. Capture-phase listener runs first and stops the form being sent.
+document.addEventListener("submit",e=>{if(e.target.id!=="reg-form")return;e.preventDefault();e.stopImmediatePropagation();$("#closed-dlg").showModal();},true);
+$("#closed-x").addEventListener("click",()=>$("#closed-dlg").close());
+$("#closed-dlg").addEventListener("click",e=>{if(e.target.id==="closed-dlg")$("#closed-dlg").close()});
 const FORM="https://formspree.io/f/xbgdeqdr";
 $("#reg-form").addEventListener("submit",async e=>{
   e.preventDefault();
