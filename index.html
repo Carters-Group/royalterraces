@@ -903,8 +903,11 @@ $("#reg-form").addEventListener("submit",async e=>{
   try{
     const r=await fetch(FORM,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)});
     if(!r.ok)throw new Error(r.status);
-    const home=$("#f-terrace").value;f.reset();say("");ok.innerHTML=deliverPack(home);   // v42 (Trent): the pack downloads once the enquiry is sent
-    if(window.fbq)fbq("track","Lead",{content_name:home});   // Meta Pixel: the home only, never the visitor's details
+    const home=$("#f-terrace").value;
+    // Meta Pixel: the home only, never the visitor's details. Sent before the popup/pack so a browser error there can't stop it.
+    // v56 (Trent, 22 Nov 2026): the ad optimises for Complete registration, so send that as well as Lead.
+    try{if(window.fbq){fbq("track","Lead",{content_name:home});fbq("track","CompleteRegistration",{content_name:home})}}catch(_){}
+    f.reset();say("");ok.innerHTML=deliverPack(home);   // v42 (Trent): the pack downloads once the enquiry is sent
   }catch(err){say("Sorry, that didn't send. Please call Trent Macartney on 0411 940 010.",true)}
   finally{btn.disabled=false}
 });
