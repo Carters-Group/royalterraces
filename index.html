@@ -399,10 +399,10 @@ fbq('init','1773499650587910');fbq('track','PageView');
     <div role="listitem"><b>2 min</b><span>walk to the grocer and two cafés</span></div>
     <div role="listitem"><b>5 min</b><span>walk to Grand Central shopping centre</span></div>
     <div role="listitem"><b>7.9 stars</b><span>average energy rating (7.1 to 8.4 across the nine homes)</span></div>
-    <div role="listitem"><b>Prices</b><span>on request</span></div>
+    <div role="listitem"><b>Prices</b><span>on application</span></div>
   </div>
-  <!-- CLOSED (v54, Trent 17 Nov 2026: registrations closed, oversubscribed). URGENCY button (v52 restyle: site button style, left, with note; v51, Trent 5 Nov 2026: below the stats row; was in the hero in v50). Goes to the Register section -->
-  <div class="urgent-row"><a class="btn btn-dark urgent-btn" href="#register"><span class="dot" aria-hidden="true"></span>Registrations closed · Oversubscribed<span class="arr" aria-hidden="true">→</span></a><span class="note"><b>Registrations have been oversubscribed.</b> Genuinely interested in a terrace? Call Trent on <a href="tel:+61411940010">0411&nbsp;940&nbsp;010</a>.</span></div>
+  <!-- REOPENED (v57, Trent 23 Nov 2026: registrations open again, pricing on application). URGENCY button (v52 restyle: site button style, left, with note; v51, Trent 5 Nov 2026: below the stats row; was in the hero in v50). Goes to the Register section -->
+  <div class="urgent-row"><a class="btn btn-dark urgent-btn" href="#register"><span class="dot" aria-hidden="true"></span>Strong interest · Register now<span class="arr" aria-hidden="true">→</span></a><span class="note"><b>Pricing on application.</b> Register your interest and Trent will be in touch with pricing for your chosen terrace.</span></div>
 </div>
 
 <!-- Vision -->
@@ -593,13 +593,13 @@ fbq('init','1773499650587910');fbq('track','PageView');
 <!-- Register -->
 <section class="sec reg" id="register" aria-labelledby="h-r">
   <div class="wrap grid">
-    <!-- CLOSED (v54, Trent 17 Nov 2026). URGENCY (v49 layout; v48, Trent 5 Nov 2026) -->
+    <!-- REOPENED (v57, Trent 23 Nov 2026). URGENCY (v49 layout; v48, Trent 5 Nov 2026) -->
     <div class="urgent">
       <div class="t">
-        <p class="eyebrow">Registrations closed</p>
-        <h2 id="h-r">Registrations have been oversubscribed.</h2>
+        <p class="eyebrow">Strong interest · register now</p>
+        <h2 id="h-r">Strong interest in these terraces.<br> Pricing on application.</h2>
       </div>
-      <p>Thank you for the strong interest in these terraces. Registrations are now closed. If you are genuinely interested in a terrace, please call Trent on <a href="tel:+61411940010"><b>0411&nbsp;940&nbsp;010</b></a>.</p>
+      <p>We are experiencing a lot of interest in these terraces. Pricing is available on application: register below and Trent will be in touch with pricing for your chosen terrace, or call him on <a href="tel:+61411940010"><b>0411&nbsp;940&nbsp;010</b></a>.</p>
     </div>
     <div class="head" style="margin:0">
       <h3 style="font-size:clamp(21px,2vw,25px);margin:0 0 8px">Download an information pack</h3>
@@ -614,7 +614,7 @@ fbq('init','1773499650587910');fbq('track','PageView');
       <label>Phone<input id="f-phone" type="tel" autocomplete="off" required></label>
       <label class="full">Home of interest<select id="f-terrace" required><option value="" selected disabled>Choose a home</option><option>Any home</option></select></label>
       <label class="full">I am<select id="f-type" required><option value="" selected disabled>Choose one</option><option>Buying to live in</option><option>Investing</option><option>Downsizing</option><option>Just browsing</option></select></label>
-      <label class="full">Budget<select id="f-budget" required><option value="" selected disabled>Choose a range</option><option>$900k to $1m</option><option>$1m to $1.2m</option><option>$1.2m and above</option></select></label>
+      <label class="full">Budget<select id="f-budget" required><option value="" selected disabled>Choose a range</option><option>$1m to $1.1m</option><option>$1.1m to $1.2m</option><option>$1.2m and above</option></select></label>
       <label class="full">Finance approved, or funds to complete?<select id="f-finance" required><option value="" selected disabled>Choose one</option><option>Yes, finance approved</option><option>Yes, sufficient funds to complete</option><option>Not yet</option></select></label>
       <label class="full check"><input id="f-updates" type="checkbox"><span>Keep me updated about future TN Macartney Projects developments (optional; unsubscribe at any time).</span></label>
       <p class="full privacy">TN Macartney Projects Pty Ltd collects your details to send the pack you asked for and contact you about 6 Royal Street. We keep them in our enquiries register and share them only as our <a href="privacy.html">privacy policy</a> describes. It also explains how to see or correct your details and how to complain.</p>
@@ -758,7 +758,7 @@ function pick(n,fill=true){
       <dt>Car space</dt><dd>1 × 2.5 × 5.4 m</dd>
       <dt>Energy rating</dt><dd>${u.star.toFixed(1)} ★</dd>
       <dt>Status</dt><dd>${u.uc?"Under contract":"Available"}</dd>
-      <dt>Price</dt><dd>${u.uc?"–":"On request"}</dd>
+      <dt>Price</dt><dd>${u.uc?"–":"On application"}</dd>
     </dl>
     <div class="ctas"><a class="btn btn-dark" href="#plans">Floor plan</a><a class="btn btn-outline" href="#register" data-pack="${u.n}">${u.uc?"Ask about similar homes":"Download this home's pack"}</a></div>`;
 }
@@ -881,7 +881,7 @@ if("IntersectionObserver" in window){
   ["vision","gallery","homes","plans","location","register","notices"].map(id=>document.getElementById(id)).filter(Boolean).forEach(el=>io.observe(el));
 }
 // CLOSED (v55, Trent 17 Nov 2026): the form still sends the enquiry to Trent; once it has gone, deliverPack shows the closed popup instead of downloading a pack.
-const REG_CLOSED=true;
+const REG_CLOSED=false;   // v57 (Trent 23 Nov 2026): reopened; set true to close again
 $("#closed-x").addEventListener("click",()=>$("#closed-dlg").close());
 $("#closed-dlg").addEventListener("click",e=>{if(e.target.id==="closed-dlg")$("#closed-dlg").close()});
 const FORM="https://formspree.io/f/xbgdeqdr";
