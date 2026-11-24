@@ -165,10 +165,11 @@ section{scroll-margin-top:24px}
 .plan polygon:hover{fill:rgba(168,129,74,.22)}
 .plan polygon.on{fill:rgba(168,129,74,.45);stroke:#8A6532}
 .plan polygon.dim{fill:rgba(243,243,238,.55)}
-.plan polygon.uc{fill:rgba(156,43,30,.18)}
+.plan polygon.uc{fill:rgba(156,43,30,.18);stroke:#9C2B1E;stroke-width:2.5}   /* v59 SOLD (Trent 24 Nov 2026): red outline */
 .plan polygon.uc.on{fill:rgba(156,43,30,.32);stroke:#9C2B1E}
 .badge{display:inline-block;font:700 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#9C2B1E;padding:3px 7px;border-radius:2px;justify-self:start}
-.home.uc{opacity:.78}
+#fptabs button.uc{outline:2px solid #9C2B1E;outline-offset:-2px;color:#9C2B1E}   /* v59 SOLD */
+.home.uc{opacity:.85;outline:2px solid #9C2B1E;outline-offset:-2px}   /* v59 SOLD: red outline */
 .plan-note{margin-top:8px;font-size:13px;color:var(--ink-2)}
 .card{display:grid;gap:14px;min-width:0}
 .plaque{justify-self:start;border:1px solid var(--ink);outline:1px solid var(--ink);outline-offset:4px;padding:8px 22px 7px;margin:5px;text-align:center}
@@ -681,7 +682,7 @@ const UNITS=[
  {n:7,street:"Snell Street",aspect:"West-north-west facing balcony and a private rear courtyard",bed:2,bath:"2",gf:49.5,ff:53.8,bal:11.6,court:5.5,total:114.9,star:7.9},
  {n:8,street:"Snell Street",aspect:"West-north-west facing balcony",bed:2,bath:"2",gf:49.5,ff:53.8,bal:11.6,total:114.9,star:7.8},
  {n:9,street:"Brown Lane",aspect:"One-bedroom courtyard home with an east-facing private courtyard",bed:1,bath:"1 + powder",gf:34.4,ff:36.3,bal:null,court:25.11,total:70.6,star:8.4}
-].map(u=>({...u,name:"Terrace "+u.n,uc:[].includes(u.n)}));
+].map(u=>({...u,name:"Terrace "+u.n,uc:[4,5,7].includes(u.n)   /* v59 (Trent 24 Nov 2026): Terraces 4, 5 and 7 SOLD */}));
 const FOOT={"1":[[1348.2,1123.8],[1615.8,1154.8],[1602,1274.2],[1406.7,1274],[1400.7,1273.4],[1402.8,1255.5],[1333.9,1247.5]],"2":[[1363.1,988.1],[1648.4,1021.1],[1632.7,1156.7],[1347.4,1123.7]],"3":[[1378.7,853],[1674.9,887.3],[1659.3,1022.4],[1363.1,988.1]],"4":[[1404.9,719.2],[1710.4,754.5],[1694.8,889.6],[1389.2,854.3]],"5":[[1420.5,584.1],[1725.6,619.4],[1709.9,754.5],[1404.9,719.2]],"6":[[598,790.8],[598,496.2],[736.7,496.2],[736.7,790.8]],"7":[[736.7,790.8],[736.7,496.2],[872.8,496.2],[872.8,790.8]],"8":[[872.8,817.8],[872.8,523.1],[1011.6,523.1],[1011.6,817.8]],"9":[[600.4,898.6],[812.6,898.6],[812.6,1028.8],[600.4,1028.8]]};
 const GALLERY=[
  {f:"whole-facade",g:"out",t:"Royal and Snell Streets",d:"The whole development from the corner"},
@@ -717,18 +718,18 @@ const svg=$("#plan-svg"),fptabs=$("#fptabs"),list=$("#homelist")||document.creat
 UNITS.forEach(u=>{
   const p=document.createElementNS(NS,"polygon");
   p.setAttribute("points",FOOT[u.n].map(q=>q.join(",")).join(" "));
-  p.dataset.n=u.n;if(u.uc)p.classList.add("uc");p.setAttribute("tabindex","0");p.setAttribute("role","button");p.setAttribute("aria-label",u.name+(u.uc?", under contract":""));
-  const t=document.createElementNS(NS,"title");t.textContent=u.name+(u.uc?" · Under contract":"");p.appendChild(t);
+  p.dataset.n=u.n;if(u.uc)p.classList.add("uc");p.setAttribute("tabindex","0");p.setAttribute("role","button");p.setAttribute("aria-label",u.name+(u.uc?", sold":""));
+  const t=document.createElementNS(NS,"title");t.textContent=u.name+(u.uc?" · Sold":"");p.appendChild(t);
   p.addEventListener("click",()=>pick(u.n));
   p.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(u.n)}});
   svg.appendChild(p);
 
-  const f=document.createElement("button");f.type="button";f.dataset.n=u.n;f.innerHTML=u.name+(u.uc?` <small style="font-weight:600;opacity:.75">· under contract</small>`:"");
+  const f=document.createElement("button");f.type="button";f.dataset.n=u.n;if(u.uc)f.classList.add("uc");f.innerHTML=u.name+(u.uc?` <small style="font-weight:600;opacity:.75">· sold</small>`:"");
   f.addEventListener("click",()=>pick(u.n));fptabs.appendChild(f);
   const h=document.createElement("button");h.type="button";h.className="home";h.dataset.n=u.n;h.dataset.street=u.street;
-  h.className="home"+(u.uc?" uc":"");h.innerHTML=`${u.uc?`<span class="badge">Under contract</span>`:""}<span class="st">${u.street==="Brown Lane"?"Courtyard home":u.street.replace(" Street"," St")}</span><b>${u.name}</b><span class="m">${u.bed} bed · ${u.bath} bath · ${fmt(u.total)} m²</span><span class="m">${u.star.toFixed(1)} ★ energy</span>`;
+  h.className="home"+(u.uc?" uc":"");h.innerHTML=`${u.uc?`<span class="badge">Sold</span>`:""}<span class="st">${u.street==="Brown Lane"?"Courtyard home":u.street.replace(" Street"," St")}</span><b>${u.name}</b><span class="m">${u.bed} bed · ${u.bath} bath · ${fmt(u.total)} m²</span><span class="m">${u.star.toFixed(1)} ★ energy</span>`;
   h.addEventListener("click",()=>{pick(u.n);go($("#plan"))});list.appendChild(h);
-  const o=document.createElement("option");o.textContent=u.name+(u.uc?" (under contract)":"");sel.appendChild(o);
+  const o=document.createElement("option");o.textContent=u.name+(u.uc?" (sold)":"");sel.appendChild(o);
 });
 document.querySelectorAll("#filters button").forEach(b=>b.addEventListener("click",()=>{
   const f=b.dataset.f;
@@ -748,7 +749,7 @@ function pick(n,fill=true){
   if(u.bal!=null) out.push(["Balcony",fmt(u.bal)+" m²"]);
   if(u.court) out.push([n===9?"Private courtyard":"Rear courtyard",fmt(u.court)+" m²"]);
   card.innerHTML=`
-    ${u.uc?`<span class="badge">Under contract</span>`:""}<div class="plaque"><small>${n===9?"Courtyard home":"Your name here"}</small><span>${u.name}</span></div>
+    ${u.uc?`<span class="badge">Sold</span>`:""}<div class="plaque"><small>${n===9?"Courtyard home":"Your name here"}</small><span>${u.name}</span></div>
     <p class="where">${u.street} · ${u.aspect}</p>
     <dl class="spec">
       <dt>Bedrooms</dt><dd>${u.bed}</dd><dt>Bathrooms</dt><dd>${u.bath}</dd>
@@ -757,7 +758,7 @@ function pick(n,fill=true){
       <dt>Total incl. balcony</dt><dd>${fmt(u.total)} m²</dd>
       <dt>Car space</dt><dd>1 × 2.5 × 5.4 m</dd>
       <dt>Energy rating</dt><dd>${u.star.toFixed(1)} ★</dd>
-      <dt>Status</dt><dd>${u.uc?"Under contract":"Available"}</dd>
+      <dt>Status</dt><dd>${u.uc?"Sold":"Available"}</dd>
       <dt>Price</dt><dd>${u.uc?"–":"On application"}</dd>
     </dl>
     <div class="ctas"><a class="btn btn-dark" href="#plans">Floor plan</a><a class="btn btn-outline" href="#register" data-pack="${u.n}">${u.uc?"Ask about similar homes":"Download this home's pack"}</a></div>`;
